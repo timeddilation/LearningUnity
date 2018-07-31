@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\SomeoneEntered.cs" />
     <Compile Include="Assets\Scripts\SpawnPotties.cs" />
     <Compile Include="Assets\Scripts\TrackPortaPotties.cs" />
+    <Compile Include="Assets\Scripts\UserCameraControler.cs" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

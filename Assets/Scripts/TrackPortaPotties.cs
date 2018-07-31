@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class TrackPortaPotties : MonoBehaviour {
 
     public NavMeshAgent agent;
-    public Text debugMenu;
     public int bladderSize = 120;
     public int hasToPee;
 
@@ -21,7 +20,6 @@ public class TrackPortaPotties : MonoBehaviour {
     private void Update()
     {
         checkIfNeedToUsePotty();
-        //debugMenu.text = hasToPee.ToString();
     }
 
     private void checkIfNeedToUsePotty()
@@ -50,7 +48,6 @@ public class TrackPortaPotties : MonoBehaviour {
                         closestPotty = potty;
                         distance = curDistance;
                     }
-                    debugMenu2.text = curDistance.ToString() + " / " + distance.ToString();
                 }
 
                 agent.SetDestination(closestPotty.transform.position);

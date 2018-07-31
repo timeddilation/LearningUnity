@@ -10,19 +10,24 @@ public class TrackPortaPotties : MonoBehaviour {
     public NavMeshAgent agent;
     public int bladderSize = 120;
     public int hasToPee;
+    public float sightRange = 3;
+
+    private Vector3 startPosition;
 
     void Start ()
     {
         gameObject.SetActive(true);
         hasToPee = 0;
+        startPosition = gameObject.transform.position;
     }
 
     private void Update()
     {
-        checkIfNeedToUsePotty();
+        CheckIfNeedToUsePotty();
+        if (hasToPee < 5) { agent.SetDestination(startPosition); }
     }
 
-    private void checkIfNeedToUsePotty()
+    private void CheckIfNeedToUsePotty()
     {
         //if need to pee, find the closest potty and go to it
         if (hasToPee >= bladderSize)
@@ -39,7 +44,7 @@ public class TrackPortaPotties : MonoBehaviour {
                     SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
                     Vector3 diff = potty.transform.position - position;
                     float curDistance = diff.sqrMagnitude;
-                    if (curDistance < 2 && checkOccupancy.isOccupied)
+                    if (curDistance < sightRange && checkOccupancy.isOccupied)
                     {
                         curDistance = Mathf.Infinity;
                     }

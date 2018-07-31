@@ -38,19 +38,23 @@ public class TrackPortaPotties : MonoBehaviour {
             {
                 foreach (GameObject potty in availablePotties)
                 {
+                    SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
                     Vector3 diff = potty.transform.position - position;
                     float curDistance = diff.sqrMagnitude;
+                    if (curDistance < 2 && checkOccupancy.isOccupied)
+                    {
+                        curDistance = Mathf.Infinity;
+                    }
                     if (curDistance < distance)
                     {
                         closestPotty = potty;
                         distance = curDistance;
                     }
+                    debugMenu2.text = curDistance.ToString() + " / " + distance.ToString();
                 }
 
                 agent.SetDestination(closestPotty.transform.position);
             }
-            
-            
         }
         else
         {
@@ -59,7 +63,7 @@ public class TrackPortaPotties : MonoBehaviour {
             {
                 hasToPee = ++hasToPee;
             }
-            
+
         }
     }
 }

@@ -103,9 +103,8 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
-    <Compile Include="Assets\Scripts\CameraAttemp3.cs" />
     <Compile Include="Assets\Scripts\DebugTrackPortaPotties.cs" />
-    <Compile Include="Assets\Scripts\MaxCamera.cs" />
+    <Compile Include="Assets\Scripts\FancyCameraController.cs" />
     <Compile Include="Assets\Scripts\RockSpawns.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\CameraTracker.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\PlayerController.cs" />

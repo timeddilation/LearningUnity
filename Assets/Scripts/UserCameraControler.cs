@@ -6,16 +6,16 @@ public class UserCameraControler : MonoBehaviour {
 
     public float zoomSpeed = 7f;
     public float dragSpeed = 0.55f;
-    public float rotateSpeed = 2f;
+    public float rotateSpeed = 3f;
 
-    private float pitch;
-    private float yaw;
+    private float lookX;
+    private float lookY;
 
     private void Start()
     {
         //set the inital pitch and yaw to camer start position
-        pitch = transform.rotation.eulerAngles.x;
-        yaw = transform.rotation.eulerAngles.y;
+        lookX = transform.rotation.eulerAngles.x;
+        lookY = transform.rotation.eulerAngles.y;
     }
 
     private void LateUpdate()
@@ -34,9 +34,9 @@ public class UserCameraControler : MonoBehaviour {
         //rotate camera
         else if (Input.GetMouseButton(1))
         {
-            yaw += rotateSpeed * Input.GetAxis("Mouse X");
-            pitch -= rotateSpeed * Input.GetAxis("Mouse Y");
-            transform.eulerAngles = new Vector3(pitch, yaw, 0f);
+            lookY += rotateSpeed * Input.GetAxis("Mouse X");
+            lookX -= rotateSpeed * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(lookX, lookY, 0f);
         }
     }
 }

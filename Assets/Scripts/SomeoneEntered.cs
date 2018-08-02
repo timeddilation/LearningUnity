@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,21 +8,28 @@ using UnityEngine.UI;
 public class SomeoneEntered : MonoBehaviour {
 
     public GameObject storedSim;
+    public Image portaGrossStat;
     public Text debugMenu;
     public int facingX;
     public int facingZ;
     public int queueSize;
     public bool isOccupied = false;
+    public float grossOutLevel;
+    public List<Guid> grossedOutSims = new List<Guid>();
 
     private int timeInPotty;
     private int timeSimSpendsInPotty;
     private float simHeight;
 
+    private readonly float maxGrossness = 10f;
+
     private void Start()
     {
+        grossedOutSims.Add(Guid.NewGuid());
         timeInPotty = 0;
         simHeight = 0;
         queueSize = 0;
+        grossOutLevel = 0;
     }
 
     private void Update()
@@ -31,26 +40,34 @@ public class SomeoneEntered : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Sim") && !isOccupied)
+        TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
+        DebugTrackPortaPotties someoneEnterDebug = other.gameObject.GetComponent<DebugTrackPortaPotties>();
+
+        if (other.gameObject.CompareTag("Sim") && !isOccupied && !grossedOutSims.Contains(someoneEntering.uniqueSim))
         {
-            TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
-            if (someoneEntering != null)
+            if (grossOutLevel <= someoneEntering.maxGrossOutLevel)
             {
-                someoneEntering.hasToPee = 0;
-                someoneEntering.gameObject.SetActive(false);
+                if (someoneEntering != null)
+                {
+                    someoneEntering.hasToPee = 0;
+                    someoneEntering.gameObject.SetActive(false);
+                }
+                if (someoneEnterDebug != null)
+                {
+                    someoneEnterDebug.hasToPee = 0;
+                    someoneEnterDebug.gameObject.SetActive(false);
+                }
+
+                storedSim = other.gameObject;
+                isOccupied = true;
+                simHeight = other.transform.position.y - transform.position.y;
+                timeSimSpendsInPotty = someoneEntering.bladderSize;
             }
-
-            DebugTrackPortaPotties someoneEnterDebug = other.gameObject.GetComponent<DebugTrackPortaPotties>();
-            if (someoneEnterDebug != null)
+            else
             {
-                someoneEnterDebug.hasToPee = 0;
-                someoneEnterDebug.gameObject.SetActive(false);
-            }          
+                grossedOutSims.Add(someoneEntering.uniqueSim);            }
 
-            storedSim = other.gameObject;
-            isOccupied = true ;
-            simHeight = other.transform.position.y - transform.position.y;
-            timeSimSpendsInPotty = someoneEntering.bladderSize;
+
         }
     }
 
@@ -65,6 +82,9 @@ public class SomeoneEntered : MonoBehaviour {
             else
             {
                 isOccupied = false;
+                grossOutLevel += UnityEngine.Random.Range(0f, 1f);
+                float grossnessMeter = grossOutLevel / maxGrossness;
+                portaGrossStat.fillAmount = grossnessMeter;
 
                 Vector3 position = transform.position;
                 if (facingX != 0)

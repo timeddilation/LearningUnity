@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &88839940
 Transform:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   agent: {fileID: 88839942}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &88839942
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   agent: {fileID: 116988564}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &116988564
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -559,6 +559,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4760827787735690, guid: 88ccea9d275542b47a02cf9575d5864b,
     type: 2}
   m_PrefabInternal: {fileID: 242351990}
+--- !u!1001 &243951215
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114893741711089738, guid: ca7eee949fafb9c4bb841336447c3c39,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1684142698}
+    - target: {fileID: 114055643194436078, guid: ca7eee949fafb9c4bb841336447c3c39,
+        type: 2}
+      propertyPath: debugMenu
+      value: 
+      objectReference: {fileID: 664135016}
+    - target: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_Name
+      value: PortaPotty
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &353348824
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +666,7 @@ MonoBehaviour:
   agent: {fileID: 353348827}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &353348827
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -702,7 +762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &377456344
 Transform:
   m_ObjectHideFlags: 0
@@ -730,7 +790,7 @@ MonoBehaviour:
   agent: {fileID: 377456346}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &377456346
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -892,61 +952,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 453583824}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &544023806
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833425102933536, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1422374306732582, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_Name
-      value: PortaPotty
-      objectReference: {fileID: 0}
-    - target: {fileID: 114248423942848222, guid: 13cbf1515fb4c844582573d62cd840da,
-        type: 2}
-      propertyPath: debugMenu
-      value: 
-      objectReference: {fileID: 664135016}
-    - target: {fileID: 1422374306732582, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &571306166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1032,7 @@ MonoBehaviour:
   agent: {fileID: 637214902}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &637214902
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1198,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &805370235
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,7 +1231,7 @@ MonoBehaviour:
   agent: {fileID: 805370237}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &805370237
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1354,7 +1359,7 @@ MonoBehaviour:
   agent: {fileID: 856117853}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &856117853
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1491,7 +1496,7 @@ MonoBehaviour:
   agent: {fileID: 902122445}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &902122445
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1668,8 +1673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ef31b1dffd9e147b7c934a2e753f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potty: {fileID: 1422374306732582, guid: 13cbf1515fb4c844582573d62cd840da, type: 2}
-  pottiesToSpawn: 8
+  potty: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+  pottiesToSpawn: 4
   pottySpawnLocations: {fileID: 1857649128}
   surface: {fileID: 1775518747}
 --- !u!1 &1025084107
@@ -2171,7 +2176,7 @@ MonoBehaviour:
   agent: {fileID: 1349575594}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &1349575594
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3075,7 +3080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2079358239
 Transform:
   m_ObjectHideFlags: 0
@@ -3103,7 +3108,7 @@ MonoBehaviour:
   agent: {fileID: 2079358241}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &2079358241
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3237,7 +3242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2099970618
 Transform:
   m_ObjectHideFlags: 0
@@ -3265,7 +3270,7 @@ MonoBehaviour:
   agent: {fileID: 2099970620}
   bladderSize: 120
   hasToPee: 0
-  sightRange: 3
+  maxGrossOutLevel: 0
 --- !u!195 &2099970620
 NavMeshAgent:
   m_ObjectHideFlags: 0

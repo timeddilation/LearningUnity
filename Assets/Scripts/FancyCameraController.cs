@@ -23,7 +23,7 @@ public class FancyCameraController : MonoBehaviour {
 
     private void LateUpdate()
     {
-        //Zoom in and out based on scroll wheel
+        //zoom in and out based on scroll wheel
         float cameraTransposeMagnitude = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         transform.Translate(0, 0, cameraTransposeMagnitude, Space.Self);
 
@@ -34,19 +34,16 @@ public class FancyCameraController : MonoBehaviour {
             float dragY = Input.GetAxis("Mouse Y") * dragSpeed;
             transform.Translate(-dragX, -dragY, 0);
         }
-        //rotate camera
+        //rotate camera, but disallowed when holding left click too
         else if (Input.GetMouseButton(1))
         {
             //be sure to grab the current rotation as starting point.
-            rotation = transform.rotation;
-
             lookX += Input.GetAxis("Mouse X") * rotateSpeed;
             lookY -= Input.GetAxis("Mouse Y") * rotateSpeed;
 
-            // set camera rotation 
+            //set camera rotation 
             currentRotation = transform.rotation;
             desiredRotation = Quaternion.Euler(lookY, lookX, 0);
-
             rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * rotationDampening);
             transform.rotation = rotation;
         }

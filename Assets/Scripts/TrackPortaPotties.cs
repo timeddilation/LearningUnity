@@ -16,6 +16,7 @@ public class TrackPortaPotties : MonoBehaviour {
     public float maxGrossOutLevel;
     public bool isQueued = false;
     public bool desiresPortaPotty = false;
+    public bool isConsiderate = true;
 
     private readonly float sightRange = 8;
 
@@ -55,7 +56,7 @@ public class TrackPortaPotties : MonoBehaviour {
                 //set static wait position while in queue
                 if (queueWaitPosition == new Vector3(0, 0, 0))
                 {
-                    queueWaitPosition = currentQueuePoint.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0f, UnityEngine.Random.Range(-1f, 1f));
+                    queueWaitPosition = currentQueuePoint.transform.position + new Vector3(UnityEngine.Random.Range(-2f, 2f), 0f, UnityEngine.Random.Range(-2f, 2f));
                 }
                 else
                 {
@@ -113,7 +114,9 @@ public class TrackPortaPotties : MonoBehaviour {
                     //when close enough to inspect, do:
                     if (curDistance < sightRange)
                     {
-                        if (checkQueue.allOccupied || checkQueue.queuedSims.Count > 0)
+                        bool isConsideringOthersInQueue = false;
+                        if (checkQueue.queuedSims.Count > 0 && isConsiderate) { isConsideringOthersInQueue = true; }
+                        if (checkQueue.allOccupied || isConsideringOthersInQueue)
                         {
                             JoinQueue(checkQueue);
                         }
@@ -131,7 +134,7 @@ public class TrackPortaPotties : MonoBehaviour {
             }
 
             //bug here hwen only one available potty: object ref error
-            agent.SetDestination(closestPotty.transform.position);
+            if (closestPotty != null) { agent.SetDestination(closestPotty.transform.position); }
         }
     }
 

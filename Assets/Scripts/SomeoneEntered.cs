@@ -9,10 +9,8 @@ public class SomeoneEntered : MonoBehaviour {
 
     public GameObject storedSim;
     public Image portaGrossStat;
-    public Text debugMenu;
     public int facingX;
     public int facingZ;
-    public int queueSize;
     public bool isOccupied = false;
     public bool outOfService = false;
     public float grossOutLevel;
@@ -21,39 +19,42 @@ public class SomeoneEntered : MonoBehaviour {
     public QueueUp queueData;
 
     private GameObject myPortaLocation = null;
-
     private int timeInPotty;
     private int timeSimSpendsInPotty;
-    private float simHeight;
 
     private readonly float maxGrossness = 4f;
 
     private void Start()
     {
-        //grossedOutSims.Add(Guid.NewGuid());
         timeInPotty = 0;
-        simHeight = 0;
-        queueSize = 0;
         grossOutLevel = 0;
 
         FindMyPortaLocation();
         spotData = myPortaLocation.GetComponent<portaSpotData>();
-        spotData.hasPotty = true;
         queueData = spotData.queuePoint.GetComponent<QueueUp>();
     }
 
     private void Update()
     {
-        HandleSomeUsingRoom();
+        HandleSomeoneUsingRoom();
         if (grossOutLevel >= maxGrossness) { outOfService = true; }
-        //debugMenu.text = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
+        SomeoneOpensDoor(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        SomeoneOpensDoor(other);
+    }
+
+    private void SomeoneOpensDoor(Collider sim)
+    {
+        TrackPortaPotties someoneEntering = sim.gameObject.GetComponent<TrackPortaPotties>();
         bool canAllowSimToUse = false;
-        if (other.gameObject.CompareTag("Sim")
+        if (sim.gameObject.CompareTag("Sim")
             && !isOccupied
             && !outOfService
             && !grossedOutSims.Contains(someoneEntering.uniqueSim)
@@ -64,18 +65,18 @@ public class SomeoneEntered : MonoBehaviour {
 
         if (canAllowSimToUse)
         {
+            //sim opens door, can evaluate gross level at this point
             if (grossOutLevel <= someoneEntering.maxGrossOutLevel)
             {
+                storedSim = sim.gameObject;
+                timeSimSpendsInPotty = someoneEntering.bladderSize;
+                isOccupied = true;
+                spotData.pottyOccupied = true;
+                queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
                 someoneEntering.hasToPee = 0;
                 someoneEntering.gameObject.SetActive(false);
                 someoneEntering.isQueued = false;
                 someoneEntering.desiresPortaPotty = false;
-                queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
-                storedSim = other.gameObject;
-                isOccupied = true;
-                spotData.pottyOccupied = true;
-                simHeight = other.transform.position.y - transform.position.y;
-                timeSimSpendsInPotty = someoneEntering.bladderSize;               
             }
             else
             {
@@ -84,7 +85,7 @@ public class SomeoneEntered : MonoBehaviour {
         }
     }
 
-    private void HandleSomeUsingRoom()
+    private void HandleSomeoneUsingRoom()
     {
         if (isOccupied)
         {
@@ -100,21 +101,16 @@ public class SomeoneEntered : MonoBehaviour {
                 float grossnessMeter = grossOutLevel / maxGrossness;
                 portaGrossStat.fillAmount = grossnessMeter;
 
+                float simHeight = storedSim.transform.position.y - transform.position.y;
                 Vector3 position = transform.position;
-                if (facingX != 0)
-                {
-                    position = position + new Vector3(facingX, simHeight, 0);
-                }
-                else
-                {
-                    position = position + new Vector3(0, simHeight, facingZ);
-                }
+
+                if (facingX != 0) { position = position + new Vector3(facingX, simHeight, 0); }
+                else { position = position + new Vector3(0, simHeight, facingZ); }
 
                 storedSim.transform.position = position;
                 storedSim.SetActive(true);
                 storedSim = null;
                 timeInPotty = 0;
-                simHeight = 0;
             }
         }
     }

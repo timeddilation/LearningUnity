@@ -29,7 +29,7 @@ public class SpawnPotties : MonoBehaviour {
         foreach (GameObject pottyLocation in pottyLocations)
         {
             portaSpotData locationData = pottyLocation.gameObject.GetComponent<portaSpotData>();
-            float spawnRotation = GetRotationOfPotty(locationData.facingX, locationData.facingY);
+            float spawnRotation = GetRotationOfPotty(locationData.facingX, locationData.facingZ);
 
             if (pottiesSpawned < pottiesToSpawn)
             {
@@ -37,19 +37,20 @@ public class SpawnPotties : MonoBehaviour {
                 GameObject goEntrance = go.transform.Find("EntranceTrigger").gameObject;
                 SomeoneEntered pottySetup = goEntrance.GetComponent<SomeoneEntered>();
                 pottySetup.facingX = locationData.facingX;
-                pottySetup.facingZ = locationData.facingY;
+                pottySetup.facingZ = locationData.facingZ;
+                locationData.hasPotty = true;
                 pottiesSpawned = ++pottiesSpawned;
             }
         }
     }
 
-    private float GetRotationOfPotty(int facingX, int facingY)
+    private float GetRotationOfPotty(int facingX, int facingZ)
     {
         float rotationValue = 0f;
         if (facingX < 0) { rotationValue = 0f; }
         else if (facingX > 0) { rotationValue = 180f; }
-        else if (facingY < 0) { rotationValue = 90f; }
-        else if (facingY > 0) { rotationValue = -90f; }
+        else if (facingZ < 0) { rotationValue = 90f; }
+        else if (facingZ > 0) { rotationValue = -90f; }
         return rotationValue;
     }
 	

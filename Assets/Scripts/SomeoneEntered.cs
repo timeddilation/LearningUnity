@@ -17,6 +17,8 @@ public class SomeoneEntered : MonoBehaviour {
     public float grossOutLevel;
     public List<Guid> grossedOutSims = new List<Guid>();
 
+    private GameObject myPortaLocation = null;
+    private portaSpotData spotData;
     private int timeInPotty;
     private int timeSimSpendsInPotty;
     private float simHeight;
@@ -30,6 +32,10 @@ public class SomeoneEntered : MonoBehaviour {
         simHeight = 0;
         queueSize = 0;
         grossOutLevel = 0;
+
+        FindMyPortaLocation();
+        spotData = myPortaLocation.GetComponent<portaSpotData>();
+        spotData.hasPotty = true;
     }
 
     private void Update()
@@ -50,8 +56,9 @@ public class SomeoneEntered : MonoBehaviour {
                 someoneEntering.gameObject.SetActive(false);
                 storedSim = other.gameObject;
                 isOccupied = true;
+                spotData.pottyOccupied = true;
                 simHeight = other.transform.position.y - transform.position.y;
-                timeSimSpendsInPotty = someoneEntering.bladderSize;
+                timeSimSpendsInPotty = someoneEntering.bladderSize;               
             }
             else
             {
@@ -73,6 +80,7 @@ public class SomeoneEntered : MonoBehaviour {
             else
             {
                 isOccupied = false;
+                spotData.pottyOccupied = false;
                 grossOutLevel += UnityEngine.Random.Range(0f, 1f);
                 float grossnessMeter = grossOutLevel / maxGrossness;
                 portaGrossStat.fillAmount = grossnessMeter;
@@ -94,5 +102,26 @@ public class SomeoneEntered : MonoBehaviour {
                 simHeight = 0;
             }
         }
+    }
+
+    private void FindMyPortaLocation()
+    {
+        GameObject[] pottyLocations = GameObject.FindGameObjectsWithTag("SpawnPotty");
+        GameObject closestPottyLocation = null;
+        float distance = Mathf.Infinity;
+
+        foreach (GameObject pottyLocation in pottyLocations)
+        {
+            Vector3 diff = pottyLocation.transform.position - transform.position;
+            float curDistance = diff.sqrMagnitude;
+
+            if (curDistance < distance)
+            {
+                closestPottyLocation = pottyLocation;
+                distance = curDistance;
+            }
+        }
+
+        myPortaLocation = closestPottyLocation;
     }
 }

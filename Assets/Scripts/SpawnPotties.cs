@@ -13,7 +13,6 @@ public class SpawnPotties : MonoBehaviour {
     private int pottiesSpawned;
     private int numberOfPottySpawnLocations;
 
-    // Use this for initialization
     void Start ()
     {
         GameObject[] pottyLocations = GameObject.FindGameObjectsWithTag("SpawnPotty");
@@ -36,9 +35,9 @@ public class SpawnPotties : MonoBehaviour {
             {
                 GameObject go = Instantiate(potty, pottyLocation.gameObject.transform.position, Quaternion.Euler(0, spawnRotation, 0));
                 GameObject goEntrance = go.transform.Find("EntranceTrigger").gameObject;
-                SomeoneEntered mything = goEntrance.GetComponent<SomeoneEntered>();
-                mything.facingX = locationData.facingX;
-                mything.facingZ = locationData.facingY;
+                SomeoneEntered pottySetup = goEntrance.GetComponent<SomeoneEntered>();
+                pottySetup.facingX = locationData.facingX;
+                pottySetup.facingZ = locationData.facingY;
                 pottiesSpawned = ++pottiesSpawned;
             }
         }

@@ -259,12 +259,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 88839942}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &88839942
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -385,12 +386,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 116988564}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &116988564
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -467,6 +469,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 116988561}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &170916077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170916078}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &170916078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 170916077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.013, y: 0, z: -0.071}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &221839815
 Prefab:
   m_ObjectHideFlags: 0
@@ -748,6 +778,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 284063947}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &286814847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286814848}
+  m_Layer: 0
+  m_Name: SpawnPoint (10)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286814848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 286814847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1, y: 0, z: -2.78}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353348824
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,12 +850,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 353348827}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &353348827
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -918,12 +977,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 377456346}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &377456346
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1102,6 +1162,80 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 446706216}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &495659135
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026819037918122, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &548372841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548372842}
+  m_Layer: 0
+  m_Name: SpawnPoint (6)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548372842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548372841}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.36, y: 0, z: -0.29}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571306166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,12 +1313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 637214902}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &637214902
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1378,6 +1513,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701416775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701416776}
+  m_Layer: 0
+  m_Name: SpawnPoint (1)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701416776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 701416775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.66, y: 0, z: 0.78}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &777106025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777106026}
+  m_Layer: 0
+  m_Name: SpawnPoint (4)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &777106026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 777106025}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15, y: 0, z: 2.21}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805370234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,12 +1613,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 805370237}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &805370237
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1552,12 +1744,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 856117853}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &856117853
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1647,6 +1840,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &888101325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888101326}
+  m_Layer: 0
+  m_Name: SpawnPoint (2)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &888101326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 888101325}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.96, y: 0, z: 1.55}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902122442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,12 +1912,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 902122445}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &902122445
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1773,6 +1995,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 902122442}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &945391972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945391973}
+  m_Layer: 0
+  m_Name: SpawnPoint (9)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945391973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 945391972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0, z: -3.22}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967457788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,12 +2067,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 967457791}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &967457791
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1911,6 +2162,7 @@ GameObject:
   - component: {fileID: 997522261}
   - component: {fileID: 997522260}
   - component: {fileID: 997522264}
+  - component: {fileID: 997522265}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1985,6 +2237,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children:
   - {fileID: 1775518746}
+  - {fileID: 1537405959}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2003,6 +2256,18 @@ MonoBehaviour:
   pottiesToSpawn: 8
   pottySpawnLocations: {fileID: 1857649128}
   surface: {fileID: 1775518747}
+--- !u!114 &997522265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 997522259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668a763e05c4ffb4aac469e712ac6db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simToSpawn: {fileID: 1026819037918122, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
 --- !u!1 &1025084107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,12 +2419,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1082869684}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &1082869684
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2400,6 +2666,34 @@ MonoBehaviour:
   hasPotty: 0
   pottyOccupied: 0
   queuePoint: {fileID: 0}
+--- !u!1 &1283620890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1283620891}
+  m_Layer: 0
+  m_Name: SpawnPoint (12)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1283620891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283620890}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.967, y: 0, z: -3.221}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289643057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,12 +2868,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1349575594}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &1349575594
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2601,6 +2896,34 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1414082225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414082226}
+  m_Layer: 0
+  m_Name: SpawnPoint (5)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414082226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1414082225}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.44, y: 0, z: 1.23}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1471050018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,6 +3032,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1471050018}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1537405958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537405959}
+  m_Layer: 0
+  m_Name: SimSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537405959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537405958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 170916078}
+  - {fileID: 701416776}
+  - {fileID: 888101326}
+  - {fileID: 1754737024}
+  - {fileID: 777106026}
+  - {fileID: 1414082226}
+  - {fileID: 548372842}
+  - {fileID: 1920376531}
+  - {fileID: 1610832934}
+  - {fileID: 945391973}
+  - {fileID: 286814848}
+  - {fileID: 2083375439}
+  - {fileID: 1283620891}
+  m_Father: {fileID: 997522263}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610393526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,6 +3101,34 @@ Transform:
   - {fileID: 1073837010}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1610832933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610832934}
+  m_Layer: 0
+  m_Name: SpawnPoint (8)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610832934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610832933}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.49, y: 0, z: -3.22}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1612779214
 GameObject:
@@ -2782,12 +3174,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1612779217}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &1612779217
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3334,6 +3727,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4317243060705618, guid: e00b871ebd4829a4b88fadc53d16e7a3,
     type: 2}
   m_PrefabInternal: {fileID: 1751005131}
+--- !u!1 &1754737023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754737024}
+  m_Layer: 0
+  m_Name: SpawnPoint (3)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754737024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754737023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.09, y: 0, z: 2.56}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775518745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,6 +4164,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1911730595}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1920376530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920376531}
+  m_Layer: 0
+  m_Name: SpawnPoint (7)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920376531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920376530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.1, y: 0, z: -1.55}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2062488651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,12 +4338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 2079358241}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &2079358241
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3985,7 +4435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2079923915
 Transform:
   m_ObjectHideFlags: 0
@@ -4011,6 +4461,34 @@ Transform:
   - {fileID: 967457789}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2083375438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2083375439}
+  m_Layer: 0
+  m_Name: SpawnPoint (11)
+  m_TagString: SpawningSim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2083375439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083375438}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.85, y: 0, z: -1.76}
+  m_LocalScale: {x: 0.15, y: 0.8, z: 0.15}
+  m_Children: []
+  m_Father: {fileID: 1537405959}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099970617
 GameObject:
@@ -4056,12 +4534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 2099970620}
+  grossText: {fileID: 0}
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
   isQueued: 0
   desiresPortaPotty: 0
+  isConsiderate: 1
 --- !u!195 &2099970620
 NavMeshAgent:
   m_ObjectHideFlags: 0

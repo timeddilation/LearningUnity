@@ -13,6 +13,8 @@ public class StatsCameraTracker : MonoBehaviour {
 
     void Update ()
     {
-        transform.LookAt(cam.transform);
+        transform.LookAt(2 * transform.position - cam.transform.position);
+        //this version of look at has images backwards
+        //transform.LookAt(cam.transform);
     }
 }

@@ -13,6 +13,8 @@ public class SomeoneEntered : MonoBehaviour {
     public int facingZ;
     public bool isOccupied = false;
     public bool outOfService = false;
+    //TO DO: separate logic of grossness and fullness for out of serive logic
+    //public float maxWasteVolume = 12;
     public float grossOutLevel;
     public List<Guid> grossedOutSims = new List<Guid>();
     public portaSpotData spotData;
@@ -81,6 +83,7 @@ public class SomeoneEntered : MonoBehaviour {
             else
             {
                 grossedOutSims.Add(someoneEntering.uniqueSim);
+                someoneEntering.grossText.gameObject.SetActive(true);
             }
         }
     }

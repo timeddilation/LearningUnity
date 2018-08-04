@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\SimplePlayerControl.cs" />
     <Compile Include="Assets\Scripts\SomeoneEntered.cs" />
     <Compile Include="Assets\Scripts\SpawnPotties.cs" />
+    <Compile Include="Assets\Scripts\SpawnSims.cs" />
     <Compile Include="Assets\Scripts\StatsCameraTracker.cs" />
     <Compile Include="Assets\Scripts\TrackPortaPotties.cs" />
     <Compile Include="Assets\Scripts\UserCameraControler.cs" />

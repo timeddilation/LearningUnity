@@ -9,34 +9,54 @@ using UnityEngine.UI;
 public class TrackPortaPotties : MonoBehaviour {
 
     public Guid uniqueSim;
+    public Image grossText;
 
-    public NavMeshAgent agent;
+    //public NavMeshAgent agent;
     public int bladderSize = 120;
-    public int hasToPee;
-    public float maxGrossOutLevel;
+    public int hasToPee = 0;
+    public float maxGrossOutLevel = 3f;
     public bool isQueued = false;
     public bool desiresPortaPotty = false;
     public bool isConsiderate = true;
 
     private readonly float sightRange = 8;
 
+    private NavMeshAgent agent;
     private GameObject currentQueuePoint = null;
     private Vector3 startPosition;
     private Vector3 queueWaitPosition;
+    private float timeToHideGrossText = 0f;
+    private readonly float lengthToShowGrossMessage = 1f;
+    private bool showingGrossText = false;
 
     void Start()
     {
         uniqueSim = Guid.NewGuid();
         gameObject.SetActive(true);
-        hasToPee = 0;
         startPosition = gameObject.transform.position;
-        maxGrossOutLevel = 10f;
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        grossText.gameObject.SetActive(false);
     }
 
     private void Update()
     {
         CheckIfNeedToUsePotty();
         if (hasToPee < 5) { agent.SetDestination(startPosition); }
+
+        if (grossText.gameObject.active && !showingGrossText)
+        {
+            showingGrossText = true;
+            timeToHideGrossText = Time.time + lengthToShowGrossMessage;
+        }
+        else if (grossText.gameObject.active && showingGrossText)
+        {
+            if (Time.time > timeToHideGrossText)
+            {
+                showingGrossText = false;
+                grossText.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     private void CheckIfNeedToUsePotty()
@@ -133,7 +153,6 @@ public class TrackPortaPotties : MonoBehaviour {
                 }
             }
 
-            //bug here hwen only one available potty: object ref error
             if (closestPotty != null) { agent.SetDestination(closestPotty.transform.position); }
         }
     }

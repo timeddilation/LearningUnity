@@ -214,6 +214,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &88839939
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +263,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &88839942
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -386,6 +389,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &116988564
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -683,6 +688,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &353348827
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -807,6 +814,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &377456346
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -984,6 +993,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &571306166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,6 +1075,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &637214902
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1264,6 +1276,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &805370237
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1392,6 +1406,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &856117853
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1529,6 +1545,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &902122445
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1810,6 +1828,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!4 &1073837010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 418198, guid: 393b236c42954a640b513d46de90ac38,
@@ -1978,6 +1997,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &1289643057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2174,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &1349575588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,6 +2278,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &1349575594
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2331,6 +2354,7 @@ MonoBehaviour:
   - {fileID: 21762403}
   - {fileID: 1025084107}
   allOccupied: 0
+  availablePottiesCount: 0
 --- !u!135 &1471050021
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2995,6 +3019,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &1838995880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3121,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &1857649128
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,6 +3319,7 @@ MonoBehaviour:
   facingY: 0
   hasPotty: 0
   pottyOccupied: 0
+  queuePoint: {fileID: 0}
 --- !u!1 &2079358238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,6 +3368,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &2079358241
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3503,6 +3532,8 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  isQueued: 0
+  desiresPortaPotty: 0
 --- !u!195 &2099970620
 NavMeshAgent:
   m_ObjectHideFlags: 0

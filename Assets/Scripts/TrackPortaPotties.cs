@@ -14,12 +14,15 @@ public class TrackPortaPotties : MonoBehaviour {
     public int bladderSize = 120;
     public int hasToPee;
     public float maxGrossOutLevel;
+    public bool isQueued = false;
+    public bool desiresPortaPotty = false;
 
-    private readonly float sightRange = 4;
+    private readonly float sightRange = 8;
 
+    private GameObject currentQueuePoint = null;
     private Vector3 startPosition;
 
-    void Start ()
+    void Start()
     {
         uniqueSim = Guid.NewGuid();
         gameObject.SetActive(true);
@@ -39,35 +42,27 @@ public class TrackPortaPotties : MonoBehaviour {
         //if need to pee, find the closest potty and go to it
         if (hasToPee >= bladderSize)
         {
-            GameObject[] availablePotties = GameObject.FindGameObjectsWithTag("Potty");
-            GameObject closestPotty = null;
-            float distance = Mathf.Infinity;
-            Vector3 position = transform.position;
+            desiresPortaPotty = true;
 
-            if (availablePotties.Length > 0)
+            if (!isQueued)
             {
-                foreach (GameObject potty in availablePotties)
+                FindPotties();
+            }
+            //handle queing
+            else
+            {
+                agent.SetDestination(currentQueuePoint.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0f, UnityEngine.Random.Range(-1f, 1f)));
+
+                QueueUp checkQueue = currentQueuePoint.GetComponent<QueueUp>();
+                int queueIndexToSearch = checkQueue.availablePottiesCount;
+                if (checkQueue.availablePottiesCount > checkQueue.queuedSims.Count())
                 {
-                    SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
-                    Vector3 diff = potty.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-
-                    if (!checkOccupancy.grossedOutSims.Contains(uniqueSim))
-                    {
-                        if (curDistance < sightRange && checkOccupancy.isOccupied)
-                        {
-                            curDistance = Mathf.Infinity;
-                        }
-                        if (curDistance < distance)
-                        {
-                            closestPotty = potty;
-                            distance = curDistance;
-                        }
-                    }
+                    queueIndexToSearch = checkQueue.queuedSims.Count();
                 }
-
-                //bug here hwen only one available potty: object ref error
-                agent.SetDestination(closestPotty.transform.position);
+                if (!checkQueue.allOccupied && checkQueue.queuedSims.GetRange(0, queueIndexToSearch).Contains(uniqueSim))
+                {
+                    FindPotties();
+                }
             }
         }
         else
@@ -78,6 +73,51 @@ public class TrackPortaPotties : MonoBehaviour {
                 hasToPee = ++hasToPee;
             }
 
+        }
+    }
+
+    private void FindPotties()
+    {
+        GameObject[] availablePotties = GameObject.FindGameObjectsWithTag("Potty");
+        GameObject closestPotty = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+
+        if (availablePotties.Length > 0)
+        {
+            foreach (GameObject potty in availablePotties)
+            {
+                SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
+                Vector3 diff = potty.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+
+                if (!checkOccupancy.grossedOutSims.Contains(uniqueSim))
+                {
+                    QueueUp checkQueue = checkOccupancy.spotData.queuePoint.GetComponent<QueueUp>();
+
+                    if (curDistance < sightRange)
+                    {                        
+                        if (!checkQueue.queuedSims.Contains(uniqueSim) && (checkQueue.allOccupied || checkQueue.queuedSims.Count > 0))
+                        {
+                            checkQueue.queuedSims.Add(uniqueSim);
+                            isQueued = true;
+                            currentQueuePoint = checkOccupancy.spotData.queuePoint;
+                        }
+                        if (checkOccupancy.isOccupied)
+                        {
+                            curDistance = Mathf.Infinity;
+                        }
+                    }
+                    if (curDistance < distance)
+                    {
+                        closestPotty = potty;
+                        distance = curDistance;
+                    }
+                }
+            }
+
+            //bug here hwen only one available potty: object ref error
+            agent.SetDestination(closestPotty.transform.position);
         }
     }
 }

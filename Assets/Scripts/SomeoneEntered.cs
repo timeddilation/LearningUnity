@@ -16,9 +16,11 @@ public class SomeoneEntered : MonoBehaviour {
     public bool isOccupied = false;
     public float grossOutLevel;
     public List<Guid> grossedOutSims = new List<Guid>();
+    public portaSpotData spotData;
+    public QueueUp queueData;
 
     private GameObject myPortaLocation = null;
-    private portaSpotData spotData;
+
     private int timeInPotty;
     private int timeSimSpendsInPotty;
     private float simHeight;
@@ -36,6 +38,7 @@ public class SomeoneEntered : MonoBehaviour {
         FindMyPortaLocation();
         spotData = myPortaLocation.GetComponent<portaSpotData>();
         spotData.hasPotty = true;
+        queueData = spotData.queuePoint.GetComponent<QueueUp>();
     }
 
     private void Update()
@@ -48,12 +51,15 @@ public class SomeoneEntered : MonoBehaviour {
     {
         TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
 
-        if (other.gameObject.CompareTag("Sim") && !isOccupied && !grossedOutSims.Contains(someoneEntering.uniqueSim))
+        if (other.gameObject.CompareTag("Sim") && !isOccupied && !grossedOutSims.Contains(someoneEntering.uniqueSim) && someoneEntering.desiresPortaPotty)
         {
             if (grossOutLevel <= someoneEntering.maxGrossOutLevel)
             {
                 someoneEntering.hasToPee = 0;
                 someoneEntering.gameObject.SetActive(false);
+                someoneEntering.isQueued = false;
+                someoneEntering.desiresPortaPotty = false;
+                queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
                 storedSim = other.gameObject;
                 isOccupied = true;
                 spotData.pottyOccupied = true;

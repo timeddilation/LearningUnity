@@ -103,6 +103,7 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\DebugMenu.cs" />
     <Compile Include="Assets\Scripts\DebugTrackPortaPotties.cs" />
     <Compile Include="Assets\Scripts\FancyCameraController.cs" />
     <Compile Include="Assets\Scripts\portaSpotData.cs" />

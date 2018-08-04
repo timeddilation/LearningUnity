@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &664135016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,7 +1310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DEBUG MENU
+  m_Text: DEBUG MENU TWO
 --- !u!222 &664135017
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1336,6 +1336,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 1, y: 1}
+--- !u!1 &685170829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685170831}
+  - component: {fileID: 685170830}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685170830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 685170829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c334a80ea228241abf76693100a244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMenu1: {fileID: 1289643059}
+  numberOfPotties: 0
+--- !u!4 &685170831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 685170829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805370234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potty: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
-  pottiesToSpawn: 4
+  pottiesToSpawn: 8
   pottySpawnLocations: {fileID: 1857649128}
   surface: {fileID: 1775518747}
 --- !u!1 &1025084107
@@ -2388,11 +2430,11 @@ RectTransform:
   m_Father: {fileID: 1644211498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 100}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 5, y: -5}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1289643059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2425,7 +2467,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DEBUG MENU
+  m_Text: DEBUG MENU ONE
 --- !u!222 &1289643060
 CanvasRenderer:
   m_ObjectHideFlags: 0

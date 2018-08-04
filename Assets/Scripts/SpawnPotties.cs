@@ -11,16 +11,16 @@ public class SpawnPotties : MonoBehaviour {
     public NavMeshSurface surface;
 
     private int pottiesSpawned;
-    private int numberOfPottySpawnLocations;
 
     void Start ()
     {
         GameObject[] pottyLocations = GameObject.FindGameObjectsWithTag("SpawnPotty");
-        numberOfPottySpawnLocations = pottyLocations.Length;
+        int numberOfPottySpawnLocations = pottyLocations.Length;
+        pottiesSpawned = 0;
         if (pottiesToSpawn > numberOfPottySpawnLocations) { pottiesToSpawn = numberOfPottySpawnLocations; }
 
-        pottiesSpawned = 0;
         GeneratePotties(pottyLocations);
+        InformGameManagerOfPotties();
         surface.BuildNavMesh();
     }
 
@@ -54,4 +54,12 @@ public class SpawnPotties : MonoBehaviour {
         return rotationValue;
     }
 	
+    private void InformGameManagerOfPotties()
+    {
+        GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
+        DebugMenu debugPotties = gameManager.GetComponent<DebugMenu>();
+
+        GameObject[] allPotties = GameObject.FindGameObjectsWithTag("Potty");
+        debugPotties.numberOfPotties = allPotties.Length;
+    }
 }

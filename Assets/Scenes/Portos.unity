@@ -124,9 +124,10 @@ GameObject:
   - component: {fileID: 21762407}
   - component: {fileID: 21762406}
   - component: {fileID: 21762405}
-  m_Layer: 0
+  - component: {fileID: 21762408}
+  m_Layer: 11
   m_Name: PortaLocation (2)
-  m_TagString: SpawnPottyNegX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,10 +139,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21762403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.5}
+  m_LocalPosition: {x: 5, y: 0, z: -1.0999999}
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
-  m_Father: {fileID: 1857649129}
+  m_Father: {fileID: 1471050019}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &21762405
@@ -198,6 +199,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21762403}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &21762408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 21762403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: -1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &88839939
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &88839940
 Transform:
   m_ObjectHideFlags: 0
@@ -762,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &377456344
 Transform:
   m_ObjectHideFlags: 0
@@ -878,9 +894,10 @@ GameObject:
   - component: {fileID: 453583828}
   - component: {fileID: 453583827}
   - component: {fileID: 453583826}
-  m_Layer: 0
+  - component: {fileID: 453583829}
+  m_Layer: 11
   m_Name: PortaLocation (6)
-  m_TagString: SpawnPottyPosX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -896,7 +913,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
   m_Father: {fileID: 1857649129}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &453583826
 BoxCollider:
@@ -952,6 +969,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 453583824}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &453583829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453583824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: 1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &571306166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &805370235
 Transform:
   m_ObjectHideFlags: 0
@@ -1674,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potty: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
-  pottiesToSpawn: 4
+  pottiesToSpawn: 8
   pottySpawnLocations: {fileID: 1857649128}
   surface: {fileID: 1775518747}
 --- !u!1 &1025084107
@@ -1688,9 +1720,10 @@ GameObject:
   - component: {fileID: 1025084111}
   - component: {fileID: 1025084110}
   - component: {fileID: 1025084109}
-  m_Layer: 0
+  - component: {fileID: 1025084112}
+  m_Layer: 11
   m_Name: PortaLocation (3)
-  m_TagString: SpawnPottyNegX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1702,10 +1735,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025084107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.75}
+  m_LocalPosition: {x: 5, y: 0, z: -3.35}
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
-  m_Father: {fileID: 1857649129}
+  m_Father: {fileID: 1471050019}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1025084109
@@ -1762,6 +1795,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025084107}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1025084112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025084107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: -1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!4 &1073837010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 418198, guid: 393b236c42954a640b513d46de90ac38,
@@ -1840,9 +1888,10 @@ GameObject:
   - component: {fileID: 1221566308}
   - component: {fileID: 1221566307}
   - component: {fileID: 1221566306}
-  m_Layer: 0
+  - component: {fileID: 1221566309}
+  m_Layer: 11
   m_Name: PortaLocation (1)
-  m_TagString: SpawnPottyNegX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1854,10 +1903,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1221566304}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.25}
+  m_LocalPosition: {x: 5, y: 0, z: 1.1500001}
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
-  m_Father: {fileID: 1857649129}
+  m_Father: {fileID: 1471050019}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1221566306
@@ -1914,6 +1963,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1221566304}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1221566309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1221566304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: -1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &1289643057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,9 +2064,10 @@ GameObject:
   - component: {fileID: 1318314790}
   - component: {fileID: 1318314789}
   - component: {fileID: 1318314788}
-  m_Layer: 0
+  - component: {fileID: 1318314791}
+  m_Layer: 11
   m_Name: PortaLocation (4)
-  m_TagString: SpawnPottyPosX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2018,7 +2083,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
   m_Father: {fileID: 1857649129}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1318314788
 BoxCollider:
@@ -2074,6 +2139,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1318314786}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1318314791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318314786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: 1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &1349575588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,6 +2278,112 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1471050018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471050019}
+  - component: {fileID: 1471050023}
+  - component: {fileID: 1471050022}
+  - component: {fileID: 1471050021}
+  - component: {fileID: 1471050020}
+  m_Layer: 0
+  m_Name: Group1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1471050019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471050018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: -3.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1838995881}
+  - {fileID: 1221566305}
+  - {fileID: 21762404}
+  - {fileID: 1025084108}
+  m_Father: {fileID: 1857649129}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1471050020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471050018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84495b9c2ce098c4ab835e495cd79ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portaSpots:
+  - {fileID: 1838995880}
+  - {fileID: 1221566304}
+  - {fileID: 21762403}
+  - {fileID: 1025084107}
+--- !u!135 &1471050021
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471050018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1471050022
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471050018}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1471050023
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471050018}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1610393526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2827,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 2359
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -2718,9 +2904,10 @@ GameObject:
   - component: {fileID: 1831603347}
   - component: {fileID: 1831603346}
   - component: {fileID: 1831603345}
-  m_Layer: 0
+  - component: {fileID: 1831603348}
+  m_Layer: 11
   m_Name: PortaLocation (5)
-  m_TagString: SpawnPottyPosX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2736,7 +2923,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
   m_Father: {fileID: 1857649129}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1831603345
 BoxCollider:
@@ -2792,6 +2979,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1831603343}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1831603348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831603343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: 1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &1838995880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,9 +3005,10 @@ GameObject:
   - component: {fileID: 1838995884}
   - component: {fileID: 1838995883}
   - component: {fileID: 1838995882}
-  m_Layer: 0
+  - component: {fileID: 1838995885}
+  m_Layer: 11
   m_Name: PortaLocation
-  m_TagString: SpawnPottyNegX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2817,10 +3020,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1838995880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 3.4}
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
-  m_Father: {fileID: 1857649129}
+  m_Father: {fileID: 1471050019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1838995882
@@ -2877,6 +3080,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1838995880}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1838995885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838995880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: -1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &1857649128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,10 +3120,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1838995881}
-  - {fileID: 1221566305}
-  - {fileID: 21762404}
-  - {fileID: 1025084108}
+  - {fileID: 1471050019}
   - {fileID: 1318314787}
   - {fileID: 1831603344}
   - {fileID: 453583825}
@@ -2987,9 +3202,10 @@ GameObject:
   - component: {fileID: 1971744583}
   - component: {fileID: 1971744582}
   - component: {fileID: 1971744581}
-  m_Layer: 0
+  - component: {fileID: 1971744584}
+  m_Layer: 11
   m_Name: PortaLocation (7)
-  m_TagString: SpawnPottyPosX
+  m_TagString: SpawnPotty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3005,7 +3221,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_Children: []
   m_Father: {fileID: 1857649129}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1971744581
 BoxCollider:
@@ -3061,6 +3277,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1971744579}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1971744584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971744579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26b23c8a8d0b349bea2ec8fc11c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingX: 1
+  facingY: 0
+  hasPotty: 0
+  pottyOccupied: 0
 --- !u!1 &2079358238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2079358239
 Transform:
   m_ObjectHideFlags: 0
@@ -3242,7 +3473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2099970618
 Transform:
   m_ObjectHideFlags: 0

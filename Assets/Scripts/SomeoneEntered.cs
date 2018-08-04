@@ -34,30 +34,20 @@ public class SomeoneEntered : MonoBehaviour {
 
     private void Update()
     {
-        handleSomeUsingRoom();
+        HandleSomeUsingRoom();
         //debugMenu.text = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
-        DebugTrackPortaPotties someoneEnterDebug = other.gameObject.GetComponent<DebugTrackPortaPotties>();
 
         if (other.gameObject.CompareTag("Sim") && !isOccupied && !grossedOutSims.Contains(someoneEntering.uniqueSim))
         {
             if (grossOutLevel <= someoneEntering.maxGrossOutLevel)
             {
-                if (someoneEntering != null)
-                {
-                    someoneEntering.hasToPee = 0;
-                    someoneEntering.gameObject.SetActive(false);
-                }
-                if (someoneEnterDebug != null)
-                {
-                    someoneEnterDebug.hasToPee = 0;
-                    someoneEnterDebug.gameObject.SetActive(false);
-                }
-
+                someoneEntering.hasToPee = 0;
+                someoneEntering.gameObject.SetActive(false);
                 storedSim = other.gameObject;
                 isOccupied = true;
                 simHeight = other.transform.position.y - transform.position.y;
@@ -65,13 +55,14 @@ public class SomeoneEntered : MonoBehaviour {
             }
             else
             {
-                grossedOutSims.Add(someoneEntering.uniqueSim);            }
+                grossedOutSims.Add(someoneEntering.uniqueSim);
+            }
 
 
         }
     }
 
-    private void handleSomeUsingRoom()
+    private void HandleSomeUsingRoom()
     {
         if (isOccupied)
         {

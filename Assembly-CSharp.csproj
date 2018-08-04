@@ -105,6 +105,8 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\DebugTrackPortaPotties.cs" />
     <Compile Include="Assets\Scripts\FancyCameraController.cs" />
+    <Compile Include="Assets\Scripts\portaSpotData.cs" />
+    <Compile Include="Assets\Scripts\QueueUp.cs" />
     <Compile Include="Assets\Scripts\RockSpawns.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\CameraTracker.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\PlayerController.cs" />

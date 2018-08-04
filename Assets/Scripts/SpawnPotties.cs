@@ -61,5 +61,7 @@ public class SpawnPotties : MonoBehaviour {
 
         GameObject[] allPotties = GameObject.FindGameObjectsWithTag("Potty");
         debugPotties.numberOfPotties = allPotties.Length;
+
+        WorldValuesAndObjects.availablePotties = GameObject.FindGameObjectsWithTag("Potty");
     }
 }

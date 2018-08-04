@@ -113,14 +113,14 @@ public class TrackPortaPotties : MonoBehaviour {
 
     private void FindPotties()
     {
-        GameObject[] availablePotties = GameObject.FindGameObjectsWithTag("Potty");
+        //GameObject[] availablePotties = GameObject.FindGameObjectsWithTag("Potty");
         GameObject closestPotty = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
 
-        if (availablePotties.Length > 0)
+        if (WorldValuesAndObjects.availablePotties.Length > 0)
         {
-            foreach (GameObject potty in availablePotties)
+            foreach (GameObject potty in WorldValuesAndObjects.availablePotties)
             {
                 SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
                 Vector3 diff = potty.transform.position - position;

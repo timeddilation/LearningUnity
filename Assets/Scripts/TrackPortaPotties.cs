@@ -21,6 +21,7 @@ public class TrackPortaPotties : MonoBehaviour {
 
     private GameObject currentQueuePoint = null;
     private Vector3 startPosition;
+    private Vector3 queueWaitPosition;
 
     void Start()
     {
@@ -51,8 +52,16 @@ public class TrackPortaPotties : MonoBehaviour {
             //handle queing
             else
             {
-                agent.SetDestination(currentQueuePoint.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0f, UnityEngine.Random.Range(-1f, 1f)));
-
+                //set static wait position while in queue
+                if (queueWaitPosition == new Vector3(0, 0, 0))
+                {
+                    queueWaitPosition = currentQueuePoint.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0f, UnityEngine.Random.Range(-1f, 1f));
+                }
+                else
+                {
+                    agent.SetDestination(queueWaitPosition);
+                }              
+                //check to see if at front of queue, and if so, go to a potty
                 QueueUp checkQueue = currentQueuePoint.GetComponent<QueueUp>();
                 int queueIndexToSearch = checkQueue.availablePottiesCount;
                 if (checkQueue.availablePottiesCount > checkQueue.queuedSims.Count())
@@ -61,6 +70,7 @@ public class TrackPortaPotties : MonoBehaviour {
                 }
                 if (!checkQueue.allOccupied && checkQueue.queuedSims.GetRange(0, queueIndexToSearch).Contains(uniqueSim))
                 {
+                    queueWaitPosition = new Vector3(0, 0, 0);
                     FindPotties();
                 }
             }
@@ -91,17 +101,21 @@ public class TrackPortaPotties : MonoBehaviour {
                 Vector3 diff = potty.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
 
-                if (!checkOccupancy.grossedOutSims.Contains(uniqueSim))
+                bool willConsiderPortaPotty = true;
+                if (checkOccupancy.grossedOutSims.Contains(uniqueSim) || checkOccupancy.outOfService)
+                {
+                    willConsiderPortaPotty = false;
+                }                
+
+                if (willConsiderPortaPotty)
                 {
                     QueueUp checkQueue = checkOccupancy.spotData.queuePoint.GetComponent<QueueUp>();
-
+                    //when close enough to inspect, do:
                     if (curDistance < sightRange)
-                    {                        
-                        if (!checkQueue.queuedSims.Contains(uniqueSim) && (checkQueue.allOccupied || checkQueue.queuedSims.Count > 0))
+                    {
+                        if (checkQueue.allOccupied || checkQueue.queuedSims.Count > 0)
                         {
-                            checkQueue.queuedSims.Add(uniqueSim);
-                            isQueued = true;
-                            currentQueuePoint = checkOccupancy.spotData.queuePoint;
+                            JoinQueue(checkQueue);
                         }
                         if (checkOccupancy.isOccupied)
                         {
@@ -119,5 +133,12 @@ public class TrackPortaPotties : MonoBehaviour {
             //bug here hwen only one available potty: object ref error
             agent.SetDestination(closestPotty.transform.position);
         }
+    }
+
+    private void JoinQueue(QueueUp queueToJoin)
+    {
+        queueToJoin.queuedSims.Add(uniqueSim);
+        isQueued = true;
+        currentQueuePoint = queueToJoin.gameObject;
     }
 }

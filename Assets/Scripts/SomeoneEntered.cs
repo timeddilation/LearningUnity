@@ -14,6 +14,7 @@ public class SomeoneEntered : MonoBehaviour {
     public int facingZ;
     public int queueSize;
     public bool isOccupied = false;
+    public bool outOfService = false;
     public float grossOutLevel;
     public List<Guid> grossedOutSims = new List<Guid>();
     public portaSpotData spotData;
@@ -25,11 +26,11 @@ public class SomeoneEntered : MonoBehaviour {
     private int timeSimSpendsInPotty;
     private float simHeight;
 
-    private readonly float maxGrossness = 10f;
+    private readonly float maxGrossness = 4f;
 
     private void Start()
     {
-        grossedOutSims.Add(Guid.NewGuid());
+        //grossedOutSims.Add(Guid.NewGuid());
         timeInPotty = 0;
         simHeight = 0;
         queueSize = 0;
@@ -44,14 +45,24 @@ public class SomeoneEntered : MonoBehaviour {
     private void Update()
     {
         HandleSomeUsingRoom();
+        if (grossOutLevel >= maxGrossness) { outOfService = true; }
         //debugMenu.text = gameObject.tag;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         TrackPortaPotties someoneEntering = other.gameObject.GetComponent<TrackPortaPotties>();
+        bool canAllowSimToUse = false;
+        if (other.gameObject.CompareTag("Sim")
+            && !isOccupied
+            && !outOfService
+            && !grossedOutSims.Contains(someoneEntering.uniqueSim)
+            && someoneEntering.desiresPortaPotty)
+        {
+            canAllowSimToUse = true;
+        }
 
-        if (other.gameObject.CompareTag("Sim") && !isOccupied && !grossedOutSims.Contains(someoneEntering.uniqueSim) && someoneEntering.desiresPortaPotty)
+        if (canAllowSimToUse)
         {
             if (grossOutLevel <= someoneEntering.maxGrossOutLevel)
             {
@@ -70,8 +81,6 @@ public class SomeoneEntered : MonoBehaviour {
             {
                 grossedOutSims.Add(someoneEntering.uniqueSim);
             }
-
-
         }
     }
 

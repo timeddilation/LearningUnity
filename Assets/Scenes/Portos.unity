@@ -263,6 +263,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -390,6 +391,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -617,58 +619,53 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4426541934294308, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 4277634700908548, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114893741711089738, guid: ca7eee949fafb9c4bb841336447c3c39,
+    - target: {fileID: 114323721314524160, guid: 4498258bea50dd5458419a3735fda00b,
         type: 2}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1684142698}
-    - target: {fileID: 114055643194436078, guid: ca7eee949fafb9c4bb841336447c3c39,
-        type: 2}
-      propertyPath: debugMenu
-      value: 
-      objectReference: {fileID: 664135016}
-    - target: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 1151438776567016, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_Name
       value: PortaPotty
       objectReference: {fileID: 0}
-    - target: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+    - target: {fileID: 1151438776567016, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &284063947
 GameObject:
@@ -683,7 +680,7 @@ GameObject:
   - component: {fileID: 284063950}
   - component: {fileID: 284063949}
   m_Layer: 0
-  m_Name: Group1 (1)
+  m_Name: Group (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +729,7 @@ SphereCollider:
   m_GameObject: {fileID: 284063947}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -742,7 +739,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 284063947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -854,6 +851,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -981,6 +979,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -1199,7 +1198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4394618426537298, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1026819037918122, guid: 113225477eb1ef84b8eddba89c2c7074, type: 2}
       propertyPath: m_IsActive
@@ -1317,6 +1316,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -1511,7 +1511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &701416775
 GameObject:
@@ -1617,6 +1617,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -1696,150 +1697,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 805370234}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &856117850
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 856117857}
-  - component: {fileID: 856117856}
-  - component: {fileID: 856117855}
-  - component: {fileID: 856117854}
-  - component: {fileID: 856117853}
-  - component: {fileID: 856117852}
-  - component: {fileID: 856117851}
-  m_Layer: 9
-  m_Name: DebugerSim
-  m_TagString: Sim
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &856117851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db234c51350ca024a8c7bb6bd0722430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 856117853}
-  debugMenu: {fileID: 1289643059}
-  debugMenu2: {fileID: 664135016}
-  bladderSize: 120
-  hasToPee: 0
---- !u!114 &856117852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd03c586ff7fac448933edb9fc9c055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grossText: {fileID: 0}
-  bladderSize: 120
-  hasToPee: 0
-  maxGrossOutLevel: 0
-  isQueued: 0
-  desiresPortaPotty: 0
-  isConsiderate: 1
---- !u!195 &856117853
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!136 &856117854
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!23 &856117855
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &856117856
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &856117857
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856117850}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.35, y: 0.7, z: -10.68}
-  m_LocalScale: {x: 0.5, y: 0.65, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888101325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1773,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -2071,6 +1929,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -2252,7 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ef31b1dffd9e147b7c934a2e753f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potty: {fileID: 1663399976994982, guid: ca7eee949fafb9c4bb841336447c3c39, type: 2}
+  potty: {fileID: 1151438776567016, guid: 4498258bea50dd5458419a3735fda00b, type: 2}
   pottiesToSpawn: 8
   pottySpawnLocations: {fileID: 1857649128}
   surface: {fileID: 1775518747}
@@ -2423,6 +2282,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -2872,6 +2732,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -2937,7 +2798,7 @@ GameObject:
   - component: {fileID: 1471050021}
   - component: {fileID: 1471050020}
   m_Layer: 0
-  m_Name: Group1
+  m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2986,7 +2847,7 @@ SphereCollider:
   m_GameObject: {fileID: 1471050018}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2996,7 +2857,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1471050018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3178,6 +3039,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -4342,6 +4204,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1
@@ -4460,7 +4323,7 @@ Transform:
   - {fileID: 1612779215}
   - {fileID: 967457789}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083375438
 GameObject:
@@ -4538,6 +4401,7 @@ MonoBehaviour:
   bladderSize: 120
   hasToPee: 0
   maxGrossOutLevel: 0
+  disgustingness: 1
   isQueued: 0
   desiresPortaPotty: 0
   isConsiderate: 1

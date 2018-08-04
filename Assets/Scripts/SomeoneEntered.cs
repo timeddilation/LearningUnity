@@ -9,28 +9,26 @@ public class SomeoneEntered : MonoBehaviour {
 
     public GameObject storedSim;
     public Image portaGrossStat;
+    public Image portaWasteMatterStat;
     public int facingX;
     public int facingZ;
     public bool isOccupied = false;
     public bool outOfService = false;
-    //TO DO: separate logic of grossness and fullness for out of serive logic
-    //public float maxWasteVolume = 12;
-    public float grossOutLevel;
+    public float grossOutLevel = 0;
+    public float wasteMatterVolume = 0;
     public List<Guid> grossedOutSims = new List<Guid>();
     public portaSpotData spotData;
     public QueueUp queueData;
 
     private GameObject myPortaLocation = null;
-    private int timeInPotty;
+    private int timeInPotty = 0;
     private int timeSimSpendsInPotty;
 
-    private readonly float maxGrossness = 4f;
+    private readonly float maxGrossness = 10f;
+    private readonly float maxWasteMatterVolume = 10f;
 
     private void Start()
     {
-        timeInPotty = 0;
-        grossOutLevel = 0;
-
         FindMyPortaLocation();
         spotData = myPortaLocation.GetComponent<portaSpotData>();
         queueData = spotData.queuePoint.GetComponent<QueueUp>();
@@ -39,25 +37,24 @@ public class SomeoneEntered : MonoBehaviour {
     private void Update()
     {
         HandleSomeoneUsingRoom();
-        if (grossOutLevel >= maxGrossness) { outOfService = true; }
+        if (wasteMatterVolume >= maxWasteMatterVolume) { outOfService = true; }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        SomeoneOpensDoor(other);
+        if (other.gameObject.CompareTag("Sim")) { SomeoneOpensDoor(other); }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        SomeoneOpensDoor(other);
+        if (other.gameObject.CompareTag("Sim")) { SomeoneOpensDoor(other); }
     }
 
     private void SomeoneOpensDoor(Collider sim)
     {
         TrackPortaPotties someoneEntering = sim.gameObject.GetComponent<TrackPortaPotties>();
         bool canAllowSimToUse = false;
-        if (sim.gameObject.CompareTag("Sim")
-            && !isOccupied
+        if (!isOccupied
             && !outOfService
             && !grossedOutSims.Contains(someoneEntering.uniqueSim)
             && someoneEntering.desiresPortaPotty)
@@ -98,11 +95,19 @@ public class SomeoneEntered : MonoBehaviour {
             }
             else
             {
+                TrackPortaPotties simTraits = storedSim.gameObject.GetComponent<TrackPortaPotties>();
                 isOccupied = false;
                 spotData.pottyOccupied = false;
-                grossOutLevel += UnityEngine.Random.Range(0f, 1f);
+                //calculate gross level to be added to potty
+                grossOutLevel += ((float)simTraits.bladderSize * 0.005f) + simTraits.disgustingness;
                 float grossnessMeter = grossOutLevel / maxGrossness;
                 portaGrossStat.fillAmount = grossnessMeter;
+                //calculate waste matter to be added to potty
+                wasteMatterVolume += (float)simTraits.bladderSize * 0.005f;
+                float wasteMatterMeter = wasteMatterVolume / maxWasteMatterVolume;
+                portaWasteMatterStat.fillAmount = wasteMatterMeter;
+
+
 
                 float simHeight = storedSim.transform.position.y - transform.position.y;
                 Vector3 position = transform.position;

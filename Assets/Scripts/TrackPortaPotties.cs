@@ -12,9 +12,10 @@ public class TrackPortaPotties : MonoBehaviour {
     public Image grossText;
 
     //public NavMeshAgent agent;
-    public int bladderSize = 120;
+    public int bladderSize = 100;
     public int hasToPee = 0;
     public float maxGrossOutLevel = 3f;
+    public float disgustingness = 0.5f;
     public bool isQueued = false;
     public bool desiresPortaPotty = false;
     public bool isConsiderate = true;
@@ -33,9 +34,12 @@ public class TrackPortaPotties : MonoBehaviour {
     {
         uniqueSim = Guid.NewGuid();
         gameObject.SetActive(true);
+        bladderSize = UnityEngine.Random.Range(80, 120);
+        disgustingness = UnityEngine.Random.Range(0f, 0.1f);
         startPosition = gameObject.transform.position;
         agent = gameObject.GetComponent<NavMeshAgent>();
         grossText.gameObject.SetActive(false);
+        maxGrossOutLevel = UnityEngine.Random.Range(7f, 10f);
     }
 
     private void Update()
@@ -43,12 +47,12 @@ public class TrackPortaPotties : MonoBehaviour {
         CheckIfNeedToUsePotty();
         if (hasToPee < 5) { agent.SetDestination(startPosition); }
 
-        if (grossText.gameObject.active && !showingGrossText)
+        if (grossText.gameObject.activeSelf && !showingGrossText)
         {
             showingGrossText = true;
             timeToHideGrossText = Time.time + lengthToShowGrossMessage;
         }
-        else if (grossText.gameObject.active && showingGrossText)
+        else if (grossText.gameObject.activeSelf && showingGrossText)
         {
             if (Time.time > timeToHideGrossText)
             {

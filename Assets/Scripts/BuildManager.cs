@@ -11,6 +11,7 @@ public class BuildManager : MonoBehaviour {
 
     public NavMeshSurface surface;
     public GameObject standardPottyPrefab;
+    public PottyData standardPottyCosts;
 
     private GameObject pottyToBuild;
 
@@ -23,10 +24,10 @@ public class BuildManager : MonoBehaviour {
         instance = this;
     }
 
-    //private void Start()
-    //{
-    //    pottyToBuild = standardPottyPrefab;
-    //}
+    private void Start()
+    {
+        standardPottyCosts = standardPottyPrefab.GetComponent<PottyData>();
+    }
 
     public GameObject GetPottyToBuild()
     {

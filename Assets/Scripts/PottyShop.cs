@@ -13,7 +13,6 @@ public class PottyShop : MonoBehaviour {
 
     public void PurchaseStandardPotty()
     {
-        Debug.Log("Purchase made");
         buildManager.SetPottyToBuild(buildManager.standardPottyPrefab);
     }
 }

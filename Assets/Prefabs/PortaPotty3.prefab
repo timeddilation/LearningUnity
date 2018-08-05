@@ -54,6 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4277634700908548}
+  - component: {fileID: 114736873049377254}
   m_Layer: 0
   m_Name: PortaPotty3
   m_TagString: Untagged
@@ -1017,17 +1018,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cacc29990bf5fb4ca647dde9a1edbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storedSim: {fileID: 0}
+  grossOutLevel: 0
+  wasteMatterVolume: 0
   portaGrossStat: {fileID: 114515137016268764}
   portaWasteMatterStat: {fileID: 114633554930403918}
   facingX: -1
   facingZ: 0
   isOccupied: 0
   outOfService: 0
-  grossOutLevel: 0
-  wasteMatterVolume: 0
+  storedSim: {fileID: 0}
   spotData: {fileID: 0}
   queueData: {fileID: 0}
+  myPortaLocation: {fileID: 0}
+  doorOpenSpeed: 5
+  doorOpenAngle: 75
 --- !u!114 &114633554930403918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1059,17 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114736873049377254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151438776567016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0263a3a10475d4fa74e763bf0827c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136286647849654320
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\FancyCameraController.cs" />
     <Compile Include="Assets\Scripts\GroupQueueManagement.cs" />
     <Compile Include="Assets\Scripts\portaSpotData.cs" />
+    <Compile Include="Assets\Scripts\PottyData.cs" />
     <Compile Include="Assets\Scripts\PottyShop.cs" />
     <Compile Include="Assets\Scripts\QueueUp.cs" />
     <Compile Include="Assets\Scripts\RockSpawns.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Assets\Scripts\SpawnSims.cs" />
     <Compile Include="Assets\Scripts\StatsCameraTracker.cs" />
     <Compile Include="Assets\Scripts\TrackPortaPotties.cs" />
+    <Compile Include="Assets\Scripts\UpdateMoneyDisplay.cs" />
     <Compile Include="Assets\Scripts\UserCameraControler.cs" />
     <Compile Include="Assets\Scripts\WorldValuesAndObjects.cs" />
     <Compile Include="Assets\Tent_CR_MAX_550\Scripts\CameraRig.cs" />

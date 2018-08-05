@@ -30,27 +30,35 @@ public class portaSpotData : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        //can't click if mouse is over UI element
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
+        //can't build where there is already a potty
         if (hasPotty)
         {
             Debug.Log("Already a potty there!");
             return;
         }
+        //can't build if there is nothing selected to build
         else if (buildManager.GetPottyToBuild() == null)
         {
             return;
         }
+        //not enough potties in inventory
+        else if (buildManager.pottiesSpawned >= buildManager.pottiesToSpawn)
+        {
+            Debug.Log("Not enough available potties to place!");
+            return;
+        }
+        //not enough money
+        else if (WorldValuesAndObjects.instance.amountOfMoney < buildManager.standardPottyCosts.cost)
+        {
+            Debug.Log("Not enough money to purchase!");
+        }
+        //build potty
         else
         {
-            if (buildManager.pottiesSpawned < buildManager.pottiesToSpawn)
-            {
-                BuildPotty();
-                InformGameManagerOfPotties();
-            }
-            else
-            {
-                Debug.Log("Not enough available potties to place!");
-            }
+            BuildPotty();
+            InformGameManagerOfPotties();
         }       
     }
 
@@ -82,6 +90,7 @@ public class portaSpotData : MonoBehaviour {
         float spawnRotation = GetRotationOfPotty(facingX, facingZ);
         //instantiate potty and get entrance script to set values
         GameObject potty = Instantiate(pottyToBuild, gameObject.transform.position, Quaternion.Euler(0, spawnRotation, 0));
+        PottyData pottyCosts = potty.GetComponent<PottyData>();
         GameObject pottyEntrance = potty.transform.Find("EntranceTrigger").gameObject;
         SomeoneEntered pottySetup = pottyEntrance.GetComponent<SomeoneEntered>();
         //set where and rotation on potty
@@ -93,6 +102,7 @@ public class portaSpotData : MonoBehaviour {
         //update build manager with number of potties spawned, and rebuild navMesh
         BuildManager.instance.pottiesSpawned++;
         BuildManager.instance.surface.BuildNavMesh();
+        WorldValuesAndObjects.instance.amountOfMoney -= pottyCosts.cost;
     }
 
     private void InformGameManagerOfPotties()

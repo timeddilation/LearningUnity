@@ -14,7 +14,6 @@ public class SomeoneEntered : MonoBehaviour {
     public Image portaGrossStat;
     public Image portaWasteMatterStat;    
     [Header("Meta data")]
-    public float doorOpenSpeed = 10f;
     public int facingX;
     public int facingZ;
     public bool isOccupied = false;
@@ -26,15 +25,18 @@ public class SomeoneEntered : MonoBehaviour {
     public portaSpotData spotData;
     public QueueUp queueData;
     public GameObject myPortaLocation;
-
     private int timeInPotty = 0;
     private int timeSimSpendsInPotty;
-
+    [Header("Door Mechanics")]
+    public float doorOpenSpeed = 10f;
+    public float doorOpenAngle = 75f;
+    private int openBufferTimeBeforeEntry = 20;
+    private int openBufferTimeElapsed = 0;
     private bool someoneOpeningDoor = false;
     private bool someoneClosingDoor = false;
     private GameObject pottyDoor;
     private Vector3 pottyDoorOpenRotation;
-    private Vector3 pottyDoorStartRotation;
+    private Vector3 pottyDoorCloseRotation;
 
     private void Start()
     {
@@ -42,8 +44,8 @@ public class SomeoneEntered : MonoBehaviour {
         queueData = spotData.queuePoint.GetComponent<QueueUp>();
 
         pottyDoor = transform.parent.Find("Entrance/Door").gameObject;
-        pottyDoorStartRotation = pottyDoor.transform.rotation.eulerAngles;
-        pottyDoorOpenRotation = pottyDoorStartRotation + new Vector3(0f, 80f, 0f);
+        pottyDoorCloseRotation = pottyDoor.transform.rotation.eulerAngles;
+        pottyDoorOpenRotation = pottyDoorCloseRotation + new Vector3(0f, doorOpenAngle, 0f);
     }
 
     private void Update()
@@ -61,8 +63,8 @@ public class SomeoneEntered : MonoBehaviour {
         }
         if (someoneClosingDoor)
         {
-            MoveDoor(pottyDoorStartRotation);
-            if (Mathf.Abs(pottyDoor.transform.rotation.eulerAngles.y - pottyDoorStartRotation.y) < 1)
+            MoveDoor(pottyDoorCloseRotation);
+            if (Mathf.Abs(pottyDoor.transform.rotation.eulerAngles.y - pottyDoorCloseRotation.y) < 1)
             {
                 someoneClosingDoor = false;
             } 
@@ -105,15 +107,22 @@ public class SomeoneEntered : MonoBehaviour {
                 someoneClosingDoor = false;
                 MoveDoor(pottyDoorOpenRotation);
 
-                storedSim = sim.gameObject;
-                timeSimSpendsInPotty = someoneEntering.bladderSize;
-                isOccupied = true;
-                spotData.pottyOccupied = true;
-                queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
-                someoneEntering.hasToPee = 0;
-                someoneEntering.gameObject.SetActive(false);
-                someoneEntering.isQueued = false;
-                someoneEntering.desiresPortaPotty = false;
+                //buffer this to wait for some of the door to open
+                if (openBufferTimeElapsed < openBufferTimeBeforeEntry) { ++openBufferTimeElapsed; }
+                else
+                {
+                    storedSim = sim.gameObject;
+                    timeSimSpendsInPotty = someoneEntering.bladderSize;
+                    isOccupied = true;
+                    spotData.pottyOccupied = true;
+                    queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
+                    someoneEntering.hasToPee = 0;
+                    someoneEntering.gameObject.SetActive(false);
+                    someoneEntering.isQueued = false;
+                    someoneEntering.desiresPortaPotty = false;
+                    openBufferTimeElapsed = 0;
+                }
+
             }
             else
             {
@@ -125,6 +134,12 @@ public class SomeoneEntered : MonoBehaviour {
 
     private void HandleSomeoneUsingRoom()
     {
+        if (timeSimSpendsInPotty - timeInPotty < 20)
+        {
+            someoneOpeningDoor = true;
+            someoneClosingDoor = false;
+        }
+
         if (timeInPotty <= timeSimSpendsInPotty)
         {
             timeInPotty++;

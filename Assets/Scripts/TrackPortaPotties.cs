@@ -9,19 +9,21 @@ using UnityEngine.UI;
 public class TrackPortaPotties : MonoBehaviour {
 
     public Guid uniqueSim;
-    public Image grossText;
 
-    //public NavMeshAgent agent;
-    public int bladderSize = 100;
-    public int hasToPee = 0;
+    [Header("Sim Configurables")]
+    public int bladderSize = 100;    
     public float maxGrossOutLevel = 3f;
     public float disgustingness = 0.5f;
+    [Header("Sim In-Game Stats")]
+    public int hasToPee = 0;
     public bool isQueued = false;
     public bool desiresPortaPotty = false;
     public bool isConsiderate = true;
+    public bool isPermittedByQueue = false;
+    [Header("Text Bubbles")]
+    public Image grossText;
 
     private readonly float sightRange = 8;
-
     private NavMeshAgent agent;
     private GameObject currentQueuePoint = null;
     private Vector3 startPosition;
@@ -41,7 +43,7 @@ public class TrackPortaPotties : MonoBehaviour {
         grossText.gameObject.SetActive(false);
         maxGrossOutLevel = UnityEngine.Random.Range(7f, 10f);
 
-        InvokeRepeating("CheckIfNeedToUsePotty", 0f, 0.5f);
+        InvokeRepeating("CheckIfNeedToUsePotty", 0f, 0.25f);
     }
 
     private void Update()
@@ -53,7 +55,7 @@ public class TrackPortaPotties : MonoBehaviour {
         var randy = UnityEngine.Random.Range(0, 3);
         if (randy == 1)
         {
-            hasToPee = ++hasToPee;
+            hasToPee++;
         }
 
         //handle gross text when present
@@ -106,6 +108,7 @@ public class TrackPortaPotties : MonoBehaviour {
                 if (!checkQueue.allOccupied && checkQueue.queuedSims.GetRange(0, queueIndexToSearch).Contains(uniqueSim))
                 {
                     queueWaitPosition = new Vector3(0, 0, 0);
+                    isPermittedByQueue = true;
                     FindPotties();
                 }
             }
@@ -141,7 +144,7 @@ public class TrackPortaPotties : MonoBehaviour {
                     if (curDistance < sightRange)
                     {
                         bool isConsideringOthersInQueue = false;
-                        if (checkQueue.queuedSims.Count > 0 && isConsiderate) { isConsideringOthersInQueue = true; }
+                        if (checkQueue.queuedSims.Count() > 0 && isConsiderate && !isPermittedByQueue) { isConsideringOthersInQueue = true; }
                         if (checkQueue.allOccupied || isConsideringOthersInQueue)
                         {
                             JoinQueue(checkQueue);
@@ -163,9 +166,9 @@ public class TrackPortaPotties : MonoBehaviour {
         }
     }
 
-    private void JoinQueue(QueueUp queueToJoin)
+    public void JoinQueue(QueueUp queueToJoin)
     {
-        queueToJoin.queuedSims.Add(uniqueSim);
+        if (!queueToJoin.queuedSims.Contains(uniqueSim)) { queueToJoin.queuedSims.Add(uniqueSim); }
         isQueued = true;
         currentQueuePoint = queueToJoin.gameObject;
     }

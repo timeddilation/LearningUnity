@@ -7,16 +7,19 @@ using UnityEngine.UI;
 
 public class SomeoneEntered : MonoBehaviour {
 
-    public GameObject storedSim;
+    [Header("Potty Stats")]
+    public float grossOutLevel = 0;
+    public float wasteMatterVolume = 0;
+    public List<Guid> grossedOutSims = new List<Guid>();
     public Image portaGrossStat;
-    public Image portaWasteMatterStat;
+    public Image portaWasteMatterStat;    
+    [Header("Meta data")]
     public int facingX;
     public int facingZ;
     public bool isOccupied = false;
     public bool outOfService = false;
-    public float grossOutLevel = 0;
-    public float wasteMatterVolume = 0;
-    public List<Guid> grossedOutSims = new List<Guid>();
+    [Header("In-Game Stored Data")]
+    public GameObject storedSim;
     public portaSpotData spotData;
     public QueueUp queueData;
     public GameObject myPortaLocation;
@@ -53,10 +56,15 @@ public class SomeoneEntered : MonoBehaviour {
     {
         TrackPortaPotties someoneEntering = sim.gameObject.GetComponent<TrackPortaPotties>();
         bool canAllowSimToUse = false;
-        if (!isOccupied
-            && !outOfService
-            && !grossedOutSims.Contains(someoneEntering.uniqueSim)
-            && someoneEntering.desiresPortaPotty)
+
+        if (someoneEntering.isConsiderate && queueData.queuedSims.Count() > 0 && !someoneEntering.isPermittedByQueue)
+        {
+            someoneEntering.JoinQueue(queueData);
+        }
+        else if (!isOccupied
+                && !outOfService
+                && !grossedOutSims.Contains(someoneEntering.uniqueSim)
+                && someoneEntering.desiresPortaPotty)
         {
             canAllowSimToUse = true;
         }
@@ -90,7 +98,7 @@ public class SomeoneEntered : MonoBehaviour {
         {
             if (timeInPotty <= timeSimSpendsInPotty)
             {
-                timeInPotty = ++timeInPotty;
+                timeInPotty++;
             }
             else
             {
@@ -106,8 +114,6 @@ public class SomeoneEntered : MonoBehaviour {
                 float wasteMatterMeter = wasteMatterVolume / maxWasteMatterVolume;
                 portaWasteMatterStat.fillAmount = wasteMatterMeter;
 
-
-
                 float simHeight = storedSim.transform.position.y - transform.position.y;
                 Vector3 position = transform.position;
 
@@ -115,6 +121,7 @@ public class SomeoneEntered : MonoBehaviour {
                 else { position = position + new Vector3(0, simHeight, facingZ); }
 
                 storedSim.transform.position = position;
+                simTraits.isPermittedByQueue = false;
                 storedSim.SetActive(true);
                 storedSim = null;
                 timeInPotty = 0;

@@ -34,6 +34,7 @@ public class QueueUp : MonoBehaviour {
         if (occupiedPotties.Any(p => p == true))
         {
             if (occupiedPotties.Distinct().Count() == 1) { allOccupied = true; }
+            else { allOccupied = false; }
         }
         else
         {

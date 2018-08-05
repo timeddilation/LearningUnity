@@ -23,13 +23,18 @@ public class BuildManager : MonoBehaviour {
         instance = this;
     }
 
-    private void Start()
-    {
-        pottyToBuild = standardPottyPrefab;
-    }
+    //private void Start()
+    //{
+    //    pottyToBuild = standardPottyPrefab;
+    //}
 
     public GameObject GetPottyToBuild()
     {
         return pottyToBuild;
+    }
+
+    public void SetPottyToBuild(GameObject potty)
+    {
+        pottyToBuild = potty;
     }
 }

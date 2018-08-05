@@ -22,6 +22,7 @@ public class SomeoneEntered : MonoBehaviour {
     private readonly float maxWasteMatterVolume = 10f;
     [Header("In-Game Stored Data")]
     public GameObject storedSim;
+    private TrackPortaPotties simTraits;
     public portaSpotData spotData;
     public QueueUp queueData;
     public GameObject myPortaLocation;
@@ -112,7 +113,8 @@ public class SomeoneEntered : MonoBehaviour {
                 else
                 {
                     storedSim = sim.gameObject;
-                    timeSimSpendsInPotty = someoneEntering.bladderSize;
+                    simTraits = storedSim.GetComponent<TrackPortaPotties>();
+                    timeSimSpendsInPotty = someoneEntering.bladderSize * 2;
                     isOccupied = true;
                     spotData.pottyOccupied = true;
                     queueData.queuedSims.RemoveAll(q => q == someoneEntering.uniqueSim);
@@ -134,7 +136,8 @@ public class SomeoneEntered : MonoBehaviour {
 
     private void HandleSomeoneUsingRoom()
     {
-        if (timeSimSpendsInPotty - timeInPotty < 20)
+        //just before sim is about to leave potty, start opening door sequence
+        if (timeSimSpendsInPotty - timeInPotty < 20 && !someoneOpeningDoor)
         {
             someoneOpeningDoor = true;
             someoneClosingDoor = false;
@@ -146,7 +149,6 @@ public class SomeoneEntered : MonoBehaviour {
         }
         else
         {
-            TrackPortaPotties simTraits = storedSim.gameObject.GetComponent<TrackPortaPotties>();
             isOccupied = false;
             spotData.pottyOccupied = false;
             //calculate gross level to be added to potty
@@ -159,16 +161,17 @@ public class SomeoneEntered : MonoBehaviour {
             portaWasteMatterStat.fillAmount = wasteMatterMeter;
 
             float simHeight = storedSim.transform.position.y - transform.position.y;
-            Vector3 position = transform.position;
+            Vector3 pos = transform.position;
 
-            if (facingX != 0) { position = position + new Vector3(facingX, simHeight, 0); }
-            else { position = position + new Vector3(0, simHeight, facingZ); }
+            if (facingX != 0) { pos += new Vector3((facingX * 0.5f), simHeight, 0); }
+            else { pos += new Vector3(0, simHeight, (facingZ * 0.5f)); }
 
-            storedSim.transform.position = position;
+            storedSim.transform.position = pos;
             simTraits.isPermittedByQueue = false;
             storedSim.SetActive(true);
             storedSim = null;
             timeInPotty = 0;
+            simTraits = null;
         }
     }
 

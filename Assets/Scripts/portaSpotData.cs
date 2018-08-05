@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class portaSpotData : MonoBehaviour {
 
@@ -17,22 +18,31 @@ public class portaSpotData : MonoBehaviour {
     public bool pottyOccupied = false;
     public GameObject queuePoint = null;
 
+    BuildManager buildManager;
+
     private void Start()
     {
         rend = GetComponent<Renderer>();
         startingMatarial = rend.material;
+
+        buildManager = BuildManager.instance;
     }
 
     private void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
         if (hasPotty)
         {
             Debug.Log("Already a potty there!");
             return;
         }
+        else if (buildManager.GetPottyToBuild() == null)
+        {
+            return;
+        }
         else
         {
-            if (BuildManager.instance.pottiesSpawned < BuildManager.instance.pottiesToSpawn)
+            if (buildManager.pottiesSpawned < buildManager.pottiesToSpawn)
             {
                 BuildPotty();
                 InformGameManagerOfPotties();
@@ -46,7 +56,9 @@ public class portaSpotData : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        rend.material = hoverMaterial;
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
+        if (buildManager.GetPottyToBuild() != null) { rend.material = hoverMaterial; }
+            
     }
 
     private void OnMouseExit()

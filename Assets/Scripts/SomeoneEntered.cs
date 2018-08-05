@@ -19,8 +19,8 @@ public class SomeoneEntered : MonoBehaviour {
     public List<Guid> grossedOutSims = new List<Guid>();
     public portaSpotData spotData;
     public QueueUp queueData;
+    public GameObject myPortaLocation;
 
-    private GameObject myPortaLocation = null;
     private int timeInPotty = 0;
     private int timeSimSpendsInPotty;
 
@@ -29,7 +29,6 @@ public class SomeoneEntered : MonoBehaviour {
 
     private void Start()
     {
-        FindMyPortaLocation();
         spotData = myPortaLocation.GetComponent<portaSpotData>();
         queueData = spotData.queuePoint.GetComponent<QueueUp>();
     }
@@ -121,26 +120,5 @@ public class SomeoneEntered : MonoBehaviour {
                 timeInPotty = 0;
             }
         }
-    }
-
-    private void FindMyPortaLocation()
-    {
-        GameObject[] pottyLocations = GameObject.FindGameObjectsWithTag("SpawnPotty");
-        GameObject closestPottyLocation = null;
-        float distance = Mathf.Infinity;
-
-        foreach (GameObject pottyLocation in pottyLocations)
-        {
-            Vector3 diff = pottyLocation.transform.position - transform.position;
-            float curDistance = diff.sqrMagnitude;
-
-            if (curDistance < distance)
-            {
-                closestPottyLocation = pottyLocation;
-                distance = curDistance;
-            }
-        }
-
-        myPortaLocation = closestPottyLocation;
     }
 }

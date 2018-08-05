@@ -40,13 +40,23 @@ public class TrackPortaPotties : MonoBehaviour {
         agent = gameObject.GetComponent<NavMeshAgent>();
         grossText.gameObject.SetActive(false);
         maxGrossOutLevel = UnityEngine.Random.Range(7f, 10f);
+
+        InvokeRepeating("CheckIfNeedToUsePotty", 0f, 0.5f);
     }
 
     private void Update()
     {
-        CheckIfNeedToUsePotty();
+        //move somewhere else after using potty
         if (hasToPee < 5) { agent.SetDestination(startPosition); }
 
+        //increment counter for when sim needs to use potty
+        var randy = UnityEngine.Random.Range(0, 3);
+        if (randy == 1)
+        {
+            hasToPee = ++hasToPee;
+        }
+
+        //handle gross text when present
         if (grossText.gameObject.activeSelf && !showingGrossText)
         {
             showingGrossText = true;
@@ -100,20 +110,10 @@ public class TrackPortaPotties : MonoBehaviour {
                 }
             }
         }
-        else
-        {
-            var randy = UnityEngine.Random.Range(0, 3);
-            if (randy == 1)
-            {
-                hasToPee = ++hasToPee;
-            }
-
-        }
     }
 
     private void FindPotties()
     {
-        //GameObject[] availablePotties = GameObject.FindGameObjectsWithTag("Potty");
         GameObject closestPotty = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
@@ -125,6 +125,8 @@ public class TrackPortaPotties : MonoBehaviour {
                 SomeoneEntered checkOccupancy = potty.gameObject.GetComponent<SomeoneEntered>();
                 Vector3 diff = potty.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
+
+                //float dis = Vector3.Distance(position, potty.transform.position);
 
                 bool willConsiderPortaPotty = true;
                 if (checkOccupancy.grossedOutSims.Contains(uniqueSim) || checkOccupancy.outOfService)

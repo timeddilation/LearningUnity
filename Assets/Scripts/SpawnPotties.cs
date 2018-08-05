@@ -38,6 +38,7 @@ public class SpawnPotties : MonoBehaviour {
                 SomeoneEntered pottySetup = goEntrance.GetComponent<SomeoneEntered>();
                 pottySetup.facingX = locationData.facingX;
                 pottySetup.facingZ = locationData.facingZ;
+                pottySetup.myPortaLocation = pottyLocation;
                 locationData.hasPotty = true;
                 pottiesSpawned = ++pottiesSpawned;
             }

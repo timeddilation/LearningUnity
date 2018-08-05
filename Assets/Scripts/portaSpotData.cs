@@ -32,10 +32,14 @@ public class portaSpotData : MonoBehaviour {
         }
         else
         {
-            if (BuildManager.instance.pottiesSpawned <= BuildManager.instance.pottiesToSpawn)
+            if (BuildManager.instance.pottiesSpawned < BuildManager.instance.pottiesToSpawn)
             {
                 BuildPotty();
                 InformGameManagerOfPotties();
+            }
+            else
+            {
+                Debug.Log("Not enough available potties to place!");
             }
         }       
     }
@@ -87,6 +91,6 @@ public class portaSpotData : MonoBehaviour {
         GameObject[] allPotties = GameObject.FindGameObjectsWithTag("Potty");
         debugPotties.numberOfPotties = allPotties.Length;
 
-        WorldValuesAndObjects.availablePotties = GameObject.FindGameObjectsWithTag("Potty");
+        WorldValuesAndObjects.availablePotties = allPotties;
     }
 }

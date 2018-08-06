@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: cfefd7bf1027b6346a8051a0e15725bf, type: 2}
+  hovorMaterialCantBuild: {fileID: 2100000, guid: af80d7ba06f558f4f996cc10ad918023,
+    type: 2}
   facingX: -1
   facingZ: 0
   hasPotty: 0

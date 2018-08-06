@@ -36,6 +36,7 @@ public class SpawnPotties : MonoBehaviour {
                 GameObject go = Instantiate(potty, pottyLocation.gameObject.transform.position, Quaternion.Euler(0, spawnRotation, 0));
                 GameObject goEntrance = go.transform.Find("EntranceTrigger").gameObject;
                 SomeoneEntered pottySetup = goEntrance.GetComponent<SomeoneEntered>();
+                go.SetActive(true);
                 go.transform.parent = pottyLocation.transform;
                 pottySetup.facingX = locationData.facingX;
                 pottySetup.facingZ = locationData.facingZ;

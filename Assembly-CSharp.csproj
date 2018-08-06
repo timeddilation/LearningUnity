@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\DebugMenu.cs" />
     <Compile Include="Assets\Scripts\FancyCameraController.cs" />
     <Compile Include="Assets\Scripts\GroupQueueManagement.cs" />
+    <Compile Include="Assets\Scripts\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\portaSpotData.cs" />
     <Compile Include="Assets\Scripts\PottyData.cs" />
     <Compile Include="Assets\Scripts\PottyShop.cs" />
@@ -116,6 +117,8 @@
     <Compile Include="Assets\Scripts\RollBallScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\RollBallScripts\SpawnCollectables.cs" />
+    <Compile Include="Assets\Scripts\ShopButtonStartUp.cs" />
+    <Compile Include="Assets\Scripts\ShopListControl.cs" />
     <Compile Include="Assets\Scripts\SimplePlayerControl.cs" />
     <Compile Include="Assets\Scripts\SomeoneEntered.cs" />
     <Compile Include="Assets\Scripts\SpawnPotties.cs" />

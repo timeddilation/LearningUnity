@@ -9,11 +9,14 @@ public class BuildManager : MonoBehaviour {
     public int pottiesToSpawn = 8;
     public int pottiesSpawned = 0;
 
+    public bool hasEnoughMoneyToPurchase = false;
+
     public NavMeshSurface surface;
     public GameObject standardPottyPrefab;
     public PottyData standardPottyCosts;
 
-    private GameObject pottyToBuild;
+    public GameObject pottyToBuild;
+    private WorldValuesAndObjects worldValues;
 
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class BuildManager : MonoBehaviour {
     private void Start()
     {
         standardPottyCosts = standardPottyPrefab.GetComponent<PottyData>();
+        worldValues = WorldValuesAndObjects.instance;
     }
 
     public GameObject GetPottyToBuild()
@@ -37,5 +41,14 @@ public class BuildManager : MonoBehaviour {
     public void SetPottyToBuild(GameObject potty)
     {
         pottyToBuild = potty;
+        PottyData pottyCosts = potty.GetComponent<PottyData>();
+        if (pottyCosts.cost > worldValues.amountOfMoney)
+        {
+            hasEnoughMoneyToPurchase = false;
+        }
+        else
+        {
+            hasEnoughMoneyToPurchase = true;
+        }
     }
 }

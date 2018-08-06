@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FancyCameraController : MonoBehaviour {
 
@@ -23,6 +24,9 @@ public class FancyCameraController : MonoBehaviour {
 
     private void LateUpdate()
     {
+        //no mouse camera controls when using UI elements
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
+
         //zoom in and out based on scroll wheel
         float cameraTransposeMagnitude = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         transform.Translate(0, 0, cameraTransposeMagnitude, Space.Self);

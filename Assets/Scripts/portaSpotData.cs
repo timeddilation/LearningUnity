@@ -8,6 +8,7 @@ public class portaSpotData : MonoBehaviour {
 
     [Header("Hovor Controls")]
     public Material hoverMaterial;
+    public Material hovorMaterialCantBuild;
     private Material startingMatarial;
     private Renderer rend;
 
@@ -65,7 +66,8 @@ public class portaSpotData : MonoBehaviour {
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-        if (buildManager.GetPottyToBuild() != null) { rend.material = hoverMaterial; }
+        if (!buildManager.hasEnoughMoneyToPurchase) { rend.material = hovorMaterialCantBuild; }
+        else if (buildManager.GetPottyToBuild() != null) { rend.material = hoverMaterial; }
             
     }
 
@@ -86,7 +88,7 @@ public class portaSpotData : MonoBehaviour {
 
     private void BuildPotty()
     {
-        GameObject pottyToBuild = BuildManager.instance.GetPottyToBuild();
+        GameObject pottyToBuild = buildManager.GetPottyToBuild();
         float spawnRotation = GetRotationOfPotty(facingX, facingZ);
         //instantiate potty and get entrance script to set values
         GameObject potty = Instantiate(pottyToBuild, gameObject.transform.position, Quaternion.Euler(0, spawnRotation, 0));
@@ -94,15 +96,25 @@ public class portaSpotData : MonoBehaviour {
         GameObject pottyEntrance = potty.transform.Find("EntranceTrigger").gameObject;
         SomeoneEntered pottySetup = pottyEntrance.GetComponent<SomeoneEntered>();
         //set where and rotation on potty
+        potty.SetActive(true);
         potty.transform.parent = transform;
         pottySetup.facingX = facingX;
         pottySetup.facingZ = facingZ;
         pottySetup.myPortaLocation = gameObject;
         hasPotty = true;
         //update build manager with number of potties spawned, and rebuild navMesh
-        BuildManager.instance.pottiesSpawned++;
-        BuildManager.instance.surface.BuildNavMesh();
+        buildManager.pottiesSpawned++;
+        buildManager.surface.BuildNavMesh();
         WorldValuesAndObjects.instance.amountOfMoney -= pottyCosts.cost;
+        //Update if you have enough money to build curently selected potty
+        if (pottyCosts.cost > WorldValuesAndObjects.instance.amountOfMoney)
+        {
+            buildManager.hasEnoughMoneyToPurchase = false;
+        }
+        else
+        {
+            buildManager.hasEnoughMoneyToPurchase = true;
+        }
     }
 
     private void InformGameManagerOfPotties()

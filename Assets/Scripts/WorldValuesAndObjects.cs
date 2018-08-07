@@ -6,11 +6,11 @@ public class WorldValuesAndObjects : MonoBehaviour {
 
     public static WorldValuesAndObjects instance;
     public static GameObject[] availablePotties;
-    public decimal amountOfMoney;
+    public float amountOfMoney;
 
     private void Start()
     {
-        amountOfMoney = (decimal)950.42;
+        amountOfMoney = 950.42f;
 
         if (instance != null)
         {

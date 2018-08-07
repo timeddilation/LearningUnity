@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 114399098109008050}
   - component: {fileID: 114971585607312478}
   - component: {fileID: 114354239208787106}
+  - component: {fileID: 114802329946040612}
   m_Layer: 5
   m_Name: StandardPottyButton
   m_TagString: Untagged
@@ -561,6 +562,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 1
+--- !u!114 &114802329946040612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807417492223772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a5559498a2bba4f962dfa9161f4afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisButton: {fileID: 114971585607312478}
+  buttonDisplayPottyImage: {fileID: 114399098109008050}
+  standardPottySprite: {fileID: 21300000, guid: e434f4ca1c6fac34bb0b32f1c4122be0,
+    type: 3}
+  selectedPottySprite: {fileID: 21300000, guid: d7caa860fa6d6a749ba6f2857c4f5575,
+    type: 3}
+  highlightedPottySprite: {fileID: 21300000, guid: 4e4df6e178194f64f81bbc84ad5aac41,
+    type: 3}
+  disabledPottySprite: {fileID: 21300000, guid: 3e7906aa7cf92a34fa7451a4b079ab1f,
+    type: 3}
 --- !u!114 &114863358697483156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -574,7 +596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuCollapseSpeed: 5
   collapsedMenuBufferSize: 50
-  menuScrollBar: {fileID: 114118949571481902}
+  scrollbarRect: {fileID: 114396665248769666}
+  scrollbar: {fileID: 114118949571481902}
   popMenuCaretUp: {fileID: 21300000, guid: 6d01d918061bc13439822004dc407fee, type: 3}
   popMenuCaretDown: {fileID: 21300000, guid: f8d6e0a2ee0c7704e9f7e0e65bcad659, type: 3}
   popMenuButton: {fileID: 114419503249132222}
@@ -830,7 +853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.999992, y: 278.50003}
+  m_AnchoredPosition: {x: 9.999992, y: 221}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224218186395491822

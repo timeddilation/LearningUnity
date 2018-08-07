@@ -2427,6 +2427,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1849168466}
   m_Script: {fileID: 11500000, guid: 1bde9956e407fab419ca30a55437f749, type: 3}
+--- !u!114 &1316574727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114118949571481902, guid: 3d26ec9bd89b47a4882701d7ec882a27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1849168466}
+  m_Script: {fileID: -2061169968, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1323034779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2607,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pop Menu
+  m_Text: 
 --- !u!222 &1329290621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2849,7 +2855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1537405959
 Transform:
   m_ObjectHideFlags: 0
@@ -3664,7 +3670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.7311321, b: 0.93552405, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3803,7 +3809,7 @@ GameObject:
   - component: {fileID: 1839991114}
   - component: {fileID: 1839991113}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PopMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3817,7 +3823,7 @@ RectTransform:
   m_GameObject: {fileID: 1839991111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48751, y: 1, z: 1}
   m_Children:
   - {fileID: 1329290619}
   m_Father: {fileID: 1303883035}
@@ -3899,8 +3905,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6d01d918061bc13439822004dc407fee, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4059,6 +4065,32 @@ Prefab:
         type: 2}
       propertyPath: collapsedMenuBufferSize
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114863358697483156, guid: 3d26ec9bd89b47a4882701d7ec882a27,
+        type: 2}
+      propertyPath: menuScrollBar
+      value: 
+      objectReference: {fileID: 1316574727}
+    - target: {fileID: 114863358697483156, guid: 3d26ec9bd89b47a4882701d7ec882a27,
+        type: 2}
+      propertyPath: popMenuCaretUp
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d01d918061bc13439822004dc407fee,
+        type: 3}
+    - target: {fileID: 114863358697483156, guid: 3d26ec9bd89b47a4882701d7ec882a27,
+        type: 2}
+      propertyPath: popMenuCaretDown
+      value: 
+      objectReference: {fileID: 21300000, guid: f8d6e0a2ee0c7704e9f7e0e65bcad659,
+        type: 3}
+    - target: {fileID: 114863358697483156, guid: 3d26ec9bd89b47a4882701d7ec882a27,
+        type: 2}
+      propertyPath: popMenuButton
+      value: 
+      objectReference: {fileID: 1839991113}
+    - target: {fileID: 1804436481331682, guid: 3d26ec9bd89b47a4882701d7ec882a27, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d26ec9bd89b47a4882701d7ec882a27, type: 2}

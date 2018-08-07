@@ -1,18 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopListControl : MonoBehaviour {
 
+    [Header("Menu Open and Close")]
+    public float menuCollapseSpeed = 5f;
     public float collapsedMenuBufferSize = 50f;
+
+    [Header("Static Unity Objects")]
+    public ScrollRect scrollbarRect;
+    public Scrollbar scrollbar;
+    public Sprite popMenuCaretUp;
+    public Sprite popMenuCaretDown;
+    public Button popMenuButton;
     private float hieghtBuffer;
     private Vector2 collapseDestination;
 
+    [Header("Button Templates")]
     public GameObject standardPottyButtonTemplate;
 
     private RectTransform myRectTransform;
     private bool resizingWindow = false;
     private bool isCollapsed = false;
+    private bool pottyScrollMenuHidden = false;
 
     private void Start()
     {
@@ -47,21 +59,51 @@ public class ShopListControl : MonoBehaviour {
 
         if (isCollapsed)
         {
-            myRectTransform.offsetMin = new Vector2(0f, 0f);
-            isCollapsed = false;
-            resizingWindow = false;
+            popMenuButton.image.sprite = popMenuCaretUp;
+            pottyScrollMenuHidden = false;
+            TogglePottyScrollMenu();
+            //myRectTransform.offsetMin = new Vector2(0f, 0f);
+            Vector2 smoothTransition = Vector2.Lerp(myRectTransform.offsetMin, new Vector2(0f, 0f), Time.deltaTime * menuCollapseSpeed);
+            myRectTransform.offsetMin = smoothTransition;
+
+            if (myRectTransform.offsetMin.y < 0.15f)
+            {
+                isCollapsed = false;
+                resizingWindow = false;
+            }
         }
         else
         {
+            popMenuButton.image.sprite = popMenuCaretDown;
             //myRectTransform.offsetMin = new Vector2(0f, hieghtBuffer);
-            Vector2 smoothTransition = Vector2.Lerp(myRectTransform.offsetMin, collapseDestination, 1f);
+            Vector2 smoothTransition = Vector2.Lerp(myRectTransform.offsetMin, collapseDestination, Time.deltaTime * menuCollapseSpeed);
             myRectTransform.offsetMin = smoothTransition;
 
-            if ((hieghtBuffer - myRectTransform.offsetMin.y) < 1)
+            if ((hieghtBuffer - myRectTransform.offsetMin.y) < 0.15f)
             {
                 isCollapsed = true;
-                resizingWindow = false;
-            }           
+                resizingWindow = false;                
+            }
+            //hide menu and scroll bar slightly before menu has finished collapsing
+            else if ((hieghtBuffer - myRectTransform.offsetMin.y) < 5f)
+            {
+                pottyScrollMenuHidden = true;
+                TogglePottyScrollMenu();
+            }
+        }
+    }
+
+    public void TogglePottyScrollMenu()
+    {
+        if (!pottyScrollMenuHidden)
+        {
+            scrollbarRect.enabled = true;
+            scrollbar.gameObject.SetActive(true);
+        }
+        else
+        {
+            scrollbarRect.enabled = false;
+            scrollbar.gameObject.SetActive(false);
         }
     }
 }

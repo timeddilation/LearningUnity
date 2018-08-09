@@ -20,6 +20,7 @@ public class ShopListControl : MonoBehaviour {
 
     [Header("Button Templates")]
     public GameObject standardPottyButtonTemplate;
+    public GameObject standardPottyHandiButtonTemplate;
 
     private RectTransform myRectTransform;
     private bool resizingWindow = false;
@@ -32,10 +33,13 @@ public class ShopListControl : MonoBehaviour {
         hieghtBuffer = myRectTransform.rect.height - collapsedMenuBufferSize;
         collapseDestination = new Vector2(0, hieghtBuffer);
 
-        for (int i = 0; i < 8; i++)
-        {
-            GenerateShopButtons(standardPottyButtonTemplate);
-        }     
+        //for (int i = 0; i < 8; i++)
+        //{
+        //    GenerateShopButtons(standardPottyButtonTemplate);
+        //}
+
+        GenerateShopButtons(standardPottyButtonTemplate);
+        GenerateShopButtons(standardPottyHandiButtonTemplate);
     }
 
     private void Update()
@@ -46,9 +50,11 @@ public class ShopListControl : MonoBehaviour {
     private void GenerateShopButtons(GameObject buttonTemplate)
     {
         GameObject button = Instantiate(buttonTemplate);
+        PottyData buttonData = button.GetComponent<ButtonSelected>().pottyPrefab.GetComponent<PottyData>();
         button.SetActive(true);
 
-        button.GetComponent<ShopButtonStartUp>().SetShopButtonText("$120");
+        string shopButtonText = "$" + buttonData.cost.ToString();
+        button.GetComponent<ShopButtonStartUp>().SetShopButtonText(shopButtonText);
 
         button.transform.SetParent(buttonTemplate.transform.parent, false);
     }

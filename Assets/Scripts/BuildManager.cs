@@ -6,18 +6,23 @@ using UnityEngine.AI;
 public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
+    public NavMeshSurface surface;
+    private WorldValuesAndObjects worldValues;
+
     public int pottiesToSpawn = 8;
     public int pottiesSpawned = 0;
 
-    public bool hasEnoughMoneyToPurchase = false;
-
-    public NavMeshSurface surface;
+    public bool hasEnoughMoneyToPurchase = false;    
+    //Standard potty prefab setting
     public GameObject standardPottyPrefab;
     public PottyData standardPottyCosts;
+    //Standard handicap prefab setting
+    public GameObject standardPottyHandiPrefab;
+    public PottyData standardPottyHandiCosts;
 
     public GameObject pottyToBuild;
-    private WorldValuesAndObjects worldValues;
-
+    public PottyData pottyToBuildCosts;
+    
     private void Awake()
     {
         if (instance != null)
@@ -29,8 +34,10 @@ public class BuildManager : MonoBehaviour {
 
     private void Start()
     {
-        standardPottyCosts = standardPottyPrefab.GetComponent<PottyData>();
         worldValues = WorldValuesAndObjects.instance;
+
+        standardPottyCosts = standardPottyPrefab.GetComponent<PottyData>();
+        standardPottyHandiCosts = standardPottyHandiPrefab.GetComponent<PottyData>();
     }
 
     public GameObject GetPottyToBuild()
@@ -41,8 +48,8 @@ public class BuildManager : MonoBehaviour {
     public void SetPottyToBuild(GameObject potty)
     {
         pottyToBuild = potty;
-        PottyData pottyCosts = potty.GetComponent<PottyData>();
-        if (pottyCosts.cost > worldValues.amountOfMoney)
+        pottyToBuildCosts = potty.GetComponent<PottyData>();
+        if (pottyToBuildCosts.cost > worldValues.amountOfMoney)
         {
             hasEnoughMoneyToPurchase = false;
         }

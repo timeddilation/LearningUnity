@@ -973,6 +973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0263a3a10475d4fa74e763bf0827c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pottyStyle: StandardPotty
+  cost: 120
 --- !u!114 &114597048079928954
 MonoBehaviour:
   m_ObjectHideFlags: 1

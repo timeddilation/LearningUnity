@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ButtonSelected : MonoBehaviour {
 
+    [Header("Potty Prefab, dupe in OnClick")]
+    public GameObject pottyPrefab;
     [Header("Button Display Controls")]
     [SerializeField]
     private Button thisButton;
@@ -37,7 +39,7 @@ public class ButtonSelected : MonoBehaviour {
             pressedSprite = selectedPottySprite
         };
 
-        InvokeRepeating("SetSpriteStateToStandard", 0f, 0.5f);
+        InvokeRepeating("SetSpriteStateToStandard", 0f, 0.25f);
     }
 
     private void Update()

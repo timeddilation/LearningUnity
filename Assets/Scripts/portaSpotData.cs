@@ -51,7 +51,7 @@ public class portaSpotData : MonoBehaviour {
             return;
         }
         //not enough money
-        else if (WorldValuesAndObjects.instance.amountOfMoney < buildManager.standardPottyCosts.cost)
+        else if (WorldValuesAndObjects.instance.amountOfMoney < buildManager.pottyToBuildCosts.cost)
         {
             Debug.Log("Not enough money to purchase!");
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PottyData : MonoBehaviour {
 
-    public string pottyStyle = "StandardPotty";
-    public float cost = 120.00f;
+    public string pottyStyle;
+    public float cost;
 
 }

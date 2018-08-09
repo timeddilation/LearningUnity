@@ -15,4 +15,9 @@ public class PottyShop : MonoBehaviour {
     {
         buildManager.SetPottyToBuild(buildManager.standardPottyPrefab);
     }
+
+    public void PurchaseStandardHandiPotty()
+    {
+        buildManager.SetPottyToBuild(buildManager.standardPottyHandiPrefab);
+    }
 }
